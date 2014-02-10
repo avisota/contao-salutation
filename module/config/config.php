@@ -23,7 +23,7 @@ $GLOBALS['BE_MOD']['system']['avisota_salutation'] = array
 	'tables'     => array('orm_avisota_salutation_group', 'orm_avisota_salutation'),
 	'icon'       => 'assets/avisota-core/images/salutation.png',
 	'stylesheet' => 'assets/avisota-core/css/stylesheet.css',
-	'generate'   => array('Avisota\Contao\DataContainer\SalutationGroup', 'generate')
+	'generate'   => array('Avisota\Contao\Core\DataContainer\SalutationGroup', 'generate')
 );
 
 
@@ -37,8 +37,8 @@ $GLOBALS['DOCTRINE_ENTITIES'][] = 'orm_avisota_salutation_group';
 /**
  * Salutation selection decider
  */
-$GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Salutation\GenderDecider';
-$GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Salutation\RequiredFieldsDecider';
+$GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Core\Salutation\GenderDecider';
+$GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Core\Salutation\RequiredFieldsDecider';
 
 /**
  * Predefined salutations

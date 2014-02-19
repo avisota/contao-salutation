@@ -41,7 +41,8 @@
 	"extra": {
 		"contao": {
 			"sources": {
-				"module": "system/modules/avisota-salutation"
+				"module": "system/modules/avisota-salutation",
+				"assets": "assets/avisota/salutation"
 			},
 			"transifex": {
 				"project": "avisota-contao",

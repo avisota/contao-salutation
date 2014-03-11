@@ -21,23 +21,19 @@
 $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
 (
 	// Entity
-	'entity'                => array(
+	'entity'       => array(
 		'idGenerator' => \Doctrine\ORM\Mapping\ClassMetadataInfo::GENERATOR_TYPE_UUID
 	),
 	// Config
-	'config'                => array
+	'config'       => array
 	(
 		'dataContainer'    => 'General',
 		'ctable'           => array('orm_avisota_salutation'),
 		'switchToEdit'     => true,
 		'enableVersioning' => true,
-		'onload_callback'  => array
-		(
-			array('Avisota\Contao\Core\DataContainer\SalutationGroup', 'checkPermission')
-		)
 	),
 	// DataContainer
-	'dca_config'            => array
+	'dca_config'   => array
 	(
 		'data_provider'  => array
 		(
@@ -71,7 +67,7 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
 		)
 	),
 	// List
-	'list'                  => array
+	'list'         => array
 	(
 		'sorting'           => array
 		(
@@ -89,12 +85,12 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
 		(
 			'generate' => array
 			(
-				'label' => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['generate'],
+				'label'      => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['generate'],
 				'href'       => 'key=generate',
 				'class'      => 'header_avisota_generate_salutation',
 				'attributes' => 'onclick="Backend.getScrollOffset();" accesskey="g"'
 			),
-			'all' => array
+			'all'      => array
 			(
 				'label'      => &$GLOBALS['TL_LANG']['MSC']['all'],
 				'href'       => 'act=select',
@@ -106,9 +102,10 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
 		(
 			'edit'       => array
 			(
-				'label' => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['edit'],
-				'href'  => 'table=orm_avisota_salutation',
-				'icon'  => 'edit.gif',
+				'label'   => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['edit'],
+				'href'    => 'table=orm_avisota_salutation',
+				'icon'    => 'edit.gif',
+				'idparam' => 'pid',
 			),
 			'editheader' => array
 			(
@@ -131,7 +128,10 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
 				'href'            => 'act=delete',
 				'icon'            => 'delete.gif',
 				'attributes'      => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"',
-				'button_callback' => array('Avisota\Contao\Message\Core\DataContainer\MessageCategory', 'deleteCategory')
+				'button_callback' => array(
+					'Avisota\Contao\Message\Core\DataContainer\MessageCategory',
+					'deleteCategory'
+				)
 			),
 			'show'       => array
 			(
@@ -142,17 +142,17 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
 		),
 	),
 	// Palettes
-	'metapalettes'          => array
+	'metapalettes' => array
 	(
-		'default'      => array
+		'default' => array
 		(
-			'category'   => array('title', 'alias'),
+			'category' => array('title', 'alias'),
 		),
 	),
 	// Fields
-	'fields'                => array
+	'fields'       => array
 	(
-		'id'                => array(
+		'id'          => array(
 			'field' => array(
 				'id'      => true,
 				'type'    => 'string',
@@ -160,21 +160,21 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
 				'options' => array('fixed' => true),
 			)
 		),
-		'createdAt'         => array(
+		'createdAt'   => array(
 			'field' => array(
 				'type'          => 'datetime',
 				'nullable'      => true,
 				'timestampable' => array('on' => 'create')
 			)
 		),
-		'updatedAt'         => array(
+		'updatedAt'   => array(
 			'field' => array(
 				'type'          => 'datetime',
 				'nullable'      => true,
 				'timestampable' => array('on' => 'update')
 			)
 		),
-		'salutations'          => array
+		'salutations' => array
 		(
 			'label'     => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['salutations'],
 			'eval'      => array(
@@ -189,7 +189,7 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
 				'orderBy'      => array('sorting' => 'ASC')
 			),
 		),
-		'title'             => array
+		'title'       => array
 		(
 			'label'     => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['title'],
 			'exclude'   => true,
@@ -201,7 +201,7 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
 				'tl_class'  => 'w50'
 			)
 		),
-		'alias'             => array
+		'alias'       => array
 		(
 			'label'           => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['alias'],
 			'exclude'         => true,

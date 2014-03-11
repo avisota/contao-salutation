@@ -21,3 +21,11 @@ $GLOBALS['TL_LANG']['MOD']['avisota-salutation'] = array(
 	'Avisota - Salutation',
 	'Manage flexible and dynamic salutations for Avisota messages.'
 );
+
+/**
+ * Backend modules
+ */
+$GLOBALS['TL_LANG']['MOD']['avisota_salutation']        = array(
+	'Salutation',
+	'Manage salutations.'
+);

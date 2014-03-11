@@ -17,13 +17,13 @@
 /**
  * Static back end modules
  */
-$GLOBALS['BE_MOD']['system']['avisota_salutation'] = array
+$GLOBALS['BE_MOD']['avisota']['avisota_salutation'] = array
 (
 	'nested'     => 'avisota_config',
 	'tables'     => array('orm_avisota_salutation_group', 'orm_avisota_salutation'),
-	'icon'       => 'assets/avisota/core/images/salutation.png',
-	'stylesheet' => 'assets/avisota/core/css/stylesheet.css',
-	'generate'   => array('Avisota\Contao\Core\DataContainer\SalutationGroup', 'generate')
+	'icon'       => 'assets/avisota/salutation/images/salutation.png',
+	'stylesheet' => 'assets/avisota/salutation/css/backend.css',
+	'generate'   => array('Avisota\Contao\Salutation\DataContainer\SalutationGroup', 'generate')
 );
 
 
@@ -37,8 +37,15 @@ $GLOBALS['DOCTRINE_ENTITIES'][] = 'orm_avisota_salutation_group';
 /**
  * Salutation selection decider
  */
-$GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Core\Salutation\GenderDecider';
-$GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Core\Salutation\RequiredFieldsDecider';
+$GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Salutation\GenderDecider';
+$GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Salutation\RequiredFieldsDecider';
+
+
+/**
+ * Event subscribers
+ */
+$GLOBALS['TL_EVENT_SUBSCRIBERS'][] = 'Avisota\Contao\Salutation\DataContainer\OptionsBuilder';
+
 
 /**
  * Predefined salutations

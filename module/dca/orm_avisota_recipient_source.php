@@ -19,8 +19,11 @@ use ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallba
  * Table orm_avisota_recipient_source
  * Entity Avisota\Contao:RecipientSource
  */
-$GLOBALS['TL_DCA']['orm_avisota_recipient_source']['metapalettes']['csv_file']['details'][] = 'salutation';
-$GLOBALS['TL_DCA']['orm_avisota_recipient_source']['metapalettes']['dummy']['details'][]    = 'salutation';
+$GLOBALS['TL_DCA']['orm_avisota_recipient_source']['metapalettes']['csv_file']['details'][]                          = 'salutation';
+$GLOBALS['TL_DCA']['orm_avisota_recipient_source']['metapalettes']['dummy']['details'][]                             = 'salutation';
+$GLOBALS['TL_DCA']['orm_avisota_recipient_source']['metapalettes']['integrated']['details'][]                        = 'salutation';
+$GLOBALS['TL_DCA']['orm_avisota_recipient_source']['metapalettes']['integrated_by_mailing_list']['details'][]        = 'salutation';
+$GLOBALS['TL_DCA']['orm_avisota_recipient_source']['metapalettes']['integrated_member_by_mailing_list']['details'][] = 'salutation';
 
 $GLOBALS['TL_DCA']['orm_avisota_recipient_source']['fields']['salutation'] = array
 (

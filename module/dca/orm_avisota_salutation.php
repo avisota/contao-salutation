@@ -80,7 +80,7 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
 			'fields'                => array('sorting'),
 			'panelLayout'           => 'filter;search,limit',
 			'headerFields'          => array('title'),
-			'child_record_callback' => array('Avisota\Contao\Core\DataContainer\Salutation', 'addElement')
+			'child_record_callback' => array('Avisota\Contao\Salutation\DataContainer\Salutation', 'addElement')
 		),
 		'global_operations' => array
 		(
@@ -96,9 +96,9 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
 		(
 			'edit'   => array
 			(
-				'label' => &$GLOBALS['TL_LANG']['orm_avisota_salutation']['edit'],
-				'href'  => 'act=edit',
-				'icon'  => 'edit.gif'
+				'label'   => &$GLOBALS['TL_LANG']['orm_avisota_salutation']['edit'],
+				'href'    => 'act=edit',
+				'icon'    => 'edit.gif',
 			),
 			'copy'   => array
 			(
@@ -229,7 +229,9 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
 			'label'            => &$GLOBALS['TL_LANG']['orm_avisota_salutation']['requiredFieldsFilter'],
 			'exclude'          => true,
 			'inputType'        => 'checkbox',
-			'options_callback' => CreateOptionsEventCallbackFactory::createCallback('avisota.create-recipient-field-options'),
+			'options_callback' => CreateOptionsEventCallbackFactory::createCallback(
+					'avisota.create-salutation-recipient-field-options'
+				),
 			'eval'             => array(
 				'mandatory' => true,
 				'multiple'  => true

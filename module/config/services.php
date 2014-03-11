@@ -14,13 +14,11 @@
  */
 
 
-/**
- * Define salutation decider and selector
- */
+/** @var \Pimple $container */
 
 $container['avisota.salutation.decider'] = $container->share(
-	function ($container) {
-		$decider = new \Avisota\Contao\Core\Salutation\ChainDecider();
+	function () {
+		$decider = new \Avisota\Contao\Salutation\ChainDecider();
 
 		foreach ($GLOBALS['AVISOTA_SALUTATION_DECIDER'] as $deciderClass) {
 			$decider->addDecider(new $deciderClass());
@@ -32,7 +30,7 @@ $container['avisota.salutation.decider'] = $container->share(
 
 $container['avisota.salutation.selector'] = $container->share(
 	function ($container) {
-		$selector = new \Avisota\Contao\Core\Salutation\Selector();
+		$selector = new \Avisota\Contao\Salutation\Selector();
 		$selector->setDecider($container['avisota.salutation.decider']);
 		return $selector;
 	}

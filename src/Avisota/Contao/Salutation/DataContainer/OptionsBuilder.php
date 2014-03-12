@@ -17,7 +17,6 @@ namespace Avisota\Contao\Salutation\DataContainer;
 
 use Avisota\Contao\Entity\SalutationGroup;
 use Avisota\Contao\Core\Event\CollectStylesheetsEvent;
-use Avisota\Contao\Core\Event\CollectSubscriptionListsEvent;
 use Contao\Doctrine\ORM\EntityHelper;
 use ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEvent;
 use DcGeneral\Contao\Compatibility\DcCompat;

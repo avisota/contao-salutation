@@ -19,8 +19,8 @@ use Avisota\Contao\Entity\SalutationGroup;
 use Avisota\Contao\Core\Event\CollectStylesheetsEvent;
 use Contao\Doctrine\ORM\EntityHelper;
 use ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEvent;
-use DcGeneral\Contao\Compatibility\DcCompat;
-use DcGeneral\DC_General;
+use ContaoCommunityAlliance\DcGeneral\Contao\Compatibility\DcCompat;
+use ContaoCommunityAlliance\DcGeneral\DC_General;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 

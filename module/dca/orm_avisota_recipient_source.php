@@ -13,7 +13,6 @@
  * @filesource
  */
 
-use ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory;
 
 /**
  * Table orm_avisota_recipient_source
@@ -30,7 +29,7 @@ $GLOBALS['TL_DCA']['orm_avisota_recipient_source']['fields']['salutation'] = arr
 	'default'          => false,
 	'label'            => &$GLOBALS['TL_LANG']['orm_avisota_recipient_source']['salutation'],
 	'inputType'        => 'select',
-	'options_callback' => CreateOptionsEventCallbackFactory::createCallback(
+	'options_callback' => \ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory::createCallback(
 			'avisota.create-salutation-group-options'
 		),
 	'eval'             => array('tl_class' => 'w50', 'includeBlankOption' => true)

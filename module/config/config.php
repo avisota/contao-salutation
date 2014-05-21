@@ -45,6 +45,7 @@ $GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Salutation\RequiredFi
  * Event subscribers
  */
 $GLOBALS['TL_EVENT_SUBSCRIBERS'][] = 'Avisota\Contao\Salutation\DataContainer\OptionsBuilder';
+$GLOBALS['TL_EVENT_SUBSCRIBERS'][] = 'Avisota\Contao\Salutation\EventSubscriber';
 
 
 /**

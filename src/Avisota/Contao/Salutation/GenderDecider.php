@@ -22,32 +22,16 @@ class GenderDecider implements DeciderInterface
 {
 	public function accept(RecipientInterface $recipient, Salutation $salutation)
 	{
-		$fieldValues = $salutation->getFieldValuesFilter();
-		if (!$salutation->getEnableGenderFilter() || empty($fieldValues)) {
+		$fieldValue = $salutation->getGenderFilter();
+		if (!$salutation->getEnableGenderFilter() || empty($fieldValue)) {
 			return true;
 		}
 
-		$details = $recipient->getDetails();
-		foreach ($fieldValues as $fieldValue) {
-			$fieldName = $fieldValue['field'];
-			$fieldPattern = $fieldValue['value'];
-			$isRegexp = $fieldValue['rgxp'];
+		$details      = $recipient->getDetails();
+		$fieldName = 'gender';
 
-			if (!$isRegexp) {
-				$fieldPattern = explode('*', $fieldPattern);
-				$fieldPattern = array_map(
-					function($pattern) {
-						return preg_quote($pattern, '/');
-					},
-					$fieldPattern
-				);
-				$fieldPattern = implode('.*', $fieldPattern);
-				$fieldPattern = '/' . $fieldPattern . '/';
-			}
-
-			if (!isset($details[$fieldName]) || !preg_match($fieldPattern, $details[$fieldName])) {
-				return false;
-			}
+		if (!isset($details[$fieldName]) || $fieldValue != $details[$fieldName]) {
+			return false;
 		}
 
 		return true;

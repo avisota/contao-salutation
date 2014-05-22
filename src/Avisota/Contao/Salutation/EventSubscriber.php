@@ -32,12 +32,15 @@ class EventSubscriber implements EventSubscriberInterface
 	public function injectSalutation(CreateRecipientSourceEvent $event)
 	{
 		$salutationGroupId         = $event->getConfiguration()->getSalutation();
-		$salutationGroupRepository = EntityHelper::getRepository('Avisota\Contao:SalutationGroup');
-		$salutationGroup           = $salutationGroupRepository->find($salutationGroupId);
 
-		if ($salutationGroup) {
-			$recipientSource = new SalutationRecipientSource($event->getRecipientSource(), $salutationGroup);
-			$event->setRecipientSource($recipientSource);
+		if ($salutationGroupId) {
+			$salutationGroupRepository = EntityHelper::getRepository('Avisota\Contao:SalutationGroup');
+			$salutationGroup           = $salutationGroupRepository->find($salutationGroupId);
+
+			if ($salutationGroup) {
+				$recipientSource = new SalutationRecipientSource($event->getRecipientSource(), $salutationGroup);
+				$event->setRecipientSource($recipientSource);
+			}
 		}
 	}
 }

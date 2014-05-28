@@ -95,9 +95,9 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
 		(
 			'edit'   => array
 			(
-				'label'   => &$GLOBALS['TL_LANG']['orm_avisota_salutation']['edit'],
-				'href'    => 'act=edit',
-				'icon'    => 'edit.gif',
+				'label' => &$GLOBALS['TL_LANG']['orm_avisota_salutation']['edit'],
+				'href'  => 'act=edit',
+				'icon'  => 'edit.gif',
 			),
 			'copy'   => array
 			(

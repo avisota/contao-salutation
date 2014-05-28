@@ -229,8 +229,9 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
 			'exclude'          => true,
 			'inputType'        => 'checkbox',
 			'options_callback' => \ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory::createCallback(
-					'avisota.create-salutation-recipient-field-options'
-				),
+				'avisota.create-salutation-recipient-field-options',
+				'Avisota\Contao\Core\Event\CreateOptionsEvent'
+			),
 			'eval'             => array(
 				'mandatory' => true,
 				'multiple'  => true

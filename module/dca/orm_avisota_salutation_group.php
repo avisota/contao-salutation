@@ -118,7 +118,6 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
 			'copy'       => array
 			(
 				'label'           => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['copy'],
-				'href'            => 'act=copy',
 				'icon'            => 'copy.gif',
 				'attributes'      => 'onclick="Backend.getScrollOffset();"',
 			),

@@ -21,3 +21,8 @@ $GLOBALS['TL_LANG']['orm_avisota_recipient_source']['salutation']   = array(
 	'Salutation',
 	'Please chose the salution used by this recipient source.'
 );
+
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG']['orm_avisota_recipient_source']['salutation_legend'] = 'Automated saluation';

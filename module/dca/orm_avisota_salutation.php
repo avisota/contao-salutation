@@ -83,6 +83,7 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
 		),
 		'global_operations' => array
 		(
+			/*
 			'all' => array
 			(
 				'label'      => &$GLOBALS['TL_LANG']['MSC']['all'],
@@ -90,19 +91,19 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
 				'class'      => 'header_edit_all',
 				'attributes' => 'onclick="Backend.getScrollOffset();" accesskey="e"'
 			)
+			*/
 		),
 		'operations'        => array
 		(
 			'edit'   => array
 			(
-				'label'   => &$GLOBALS['TL_LANG']['orm_avisota_salutation']['edit'],
-				'href'    => 'act=edit',
-				'icon'    => 'edit.gif',
+				'label' => &$GLOBALS['TL_LANG']['orm_avisota_salutation']['edit'],
+				'href'  => 'act=edit',
+				'icon'  => 'edit.gif',
 			),
 			'copy'   => array
 			(
 				'label'      => &$GLOBALS['TL_LANG']['orm_avisota_salutation']['copy'],
-				'href'       => 'act=paste&amp;mode=copy',
 				'icon'       => 'copy.gif',
 				'attributes' => 'onclick="Backend.getScrollOffset();"'
 			),
@@ -229,8 +230,9 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
 			'exclude'          => true,
 			'inputType'        => 'checkbox',
 			'options_callback' => \ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory::createCallback(
-					'avisota.create-salutation-recipient-field-options'
-				),
+				'avisota.create-salutation-recipient-field-options',
+				'Avisota\Contao\Core\Event\CreateOptionsEvent'
+			),
 			'eval'             => array(
 				'mandatory' => true,
 				'multiple'  => true

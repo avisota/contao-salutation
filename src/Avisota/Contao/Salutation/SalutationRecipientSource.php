@@ -89,6 +89,11 @@ class SalutationRecipientSource implements RecipientSourceInterface
 				}
 
 				$salutation = $selector->selectSalutation($recipient, $this->group);
+
+				if (!$salutation) {
+					continue;
+				}
+
 				$pattern    = $salutation->getSalutation();
 				$buffer     = $tagReplacer->parse($pattern, $recipient->getDetails());
 

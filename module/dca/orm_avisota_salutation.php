@@ -198,7 +198,7 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
 			'exclude'   => true,
 			'search'    => true,
 			'inputType' => 'text',
-			'eval'      => array('maxlength' => 255, 'tl_class' => 'clr'),
+			'eval'      => array('maxlength' => 255, 'mandatory' => true, 'decodeEntities' => true, 'tl_class' => 'clr'),
 		),
 		'enableGenderFilter'         => array
 		(

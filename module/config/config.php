@@ -19,7 +19,7 @@
  */
 $GLOBALS['BE_MOD']['avisota']['avisota_salutation'] = array
 (
-	'nested'     => 'avisota_config',
+	'nested'     => 'avisota_config:recipient',
 	'tables'     => array('orm_avisota_salutation_group', 'orm_avisota_salutation'),
 	'icon'       => 'assets/avisota/salutation/images/salutation.png',
 	'stylesheet' => 'assets/avisota/salutation/css/backend.css',

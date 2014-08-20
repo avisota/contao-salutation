@@ -15,6 +15,7 @@
 
 namespace Avisota\Contao\Salutation;
 
+use Avisota\Contao\Core\Recipient\SynonymizerService;
 use Avisota\Contao\Entity\Salutation;
 use Avisota\Recipient\RecipientInterface;
 
@@ -30,7 +31,23 @@ class RequiredFieldsDecider implements DeciderInterface
 		$details = $recipient->getDetails();
 		foreach ($requiredFields as $requiredField) {
 			if (empty($details[$requiredField])) {
-				return false;
+				/** @var SynonymizerService $synonymizer */
+				$synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
+				$synonyms    = $synonymizer->findSynonyms($requiredField);
+				$stillEmpty  = true;
+
+				if ($synonyms) {
+					foreach ($synonyms as $synonym) {
+						if (!empty($details[$synonym])) {
+							$stillEmpty = false;
+							break;
+						}
+					}
+				}
+
+				if ($stillEmpty) {
+					return false;
+				}
 			}
 		}
 

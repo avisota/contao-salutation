@@ -15,6 +15,7 @@
 
 namespace Avisota\Contao\Salutation;
 
+use Avisota\Contao\Core\Recipient\SynonymizerService;
 use Avisota\Contao\Entity\Salutation;
 use Avisota\Recipient\RecipientInterface;
 
@@ -30,10 +31,23 @@ class GenderDecider implements DeciderInterface
 		$details      = $recipient->getDetails();
 		$fieldName = 'gender';
 
-		if (!isset($details[$fieldName]) || $fieldValue != $details[$fieldName]) {
-			return false;
+		if (isset($details[$fieldName]) && $fieldValue == $details[$fieldName]) {
+			return true;
 		}
 
-		return true;
+		/** @var SynonymizerService $synonymizer */
+		$synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
+		$synonyms    = $synonymizer->findSynonyms('gender');
+
+		// try synonyms
+		if ($synonyms) {
+			foreach ($synonyms as $synonym) {
+				if (isset($details[$synonym]) && $fieldValue == $details[$synonym]) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 }

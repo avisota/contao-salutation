@@ -15,6 +15,7 @@
 
 namespace Avisota\Contao\Salutation;
 
+use Avisota\Contao\Core\Recipient\SynonymizerService;
 use Avisota\Contao\Entity\Salutation;
 use Avisota\Contao\Entity\SalutationGroup;
 use Avisota\Contao\Message\Core\Renderer\TagReplacementService;
@@ -94,8 +95,12 @@ class SalutationRecipientSource implements RecipientSourceInterface
 					continue;
 				}
 
-				$pattern    = $salutation->getSalutation();
-				$buffer     = $tagReplacer->parse($pattern, $recipient->getDetails());
+				/** @var SynonymizerService $synonymizer */
+				$synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
+
+				$pattern = $salutation->getSalutation();
+				$details = $synonymizer->expandDetailsWithSynonyms($recipient);
+				$buffer  = $tagReplacer->parse($pattern, $details);
 
 				$recipient->set('salutation', $buffer);
 			}

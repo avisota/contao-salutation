@@ -11,7 +11,7 @@
  * last-updated: 2014-03-25T14:17:42+01:00
  */
 
-
-$GLOBALS['TL_LANG']['orm_avisota_recipient_source']['salutation']['0'] = 'Anrede';
-$GLOBALS['TL_LANG']['orm_avisota_recipient_source']['salutation']['1'] = 'Bitte wählen Sie die Anrede für Empfänger aus dieser Quelle aus.';
+$GLOBALS['TL_LANG']['orm_avisota_recipient_source']['salutation']['0']   = 'Anrede';
+$GLOBALS['TL_LANG']['orm_avisota_recipient_source']['salutation']['1']   = 'Bitte wählen Sie die Anrede für Empfänger aus dieser Quelle aus.';
+$GLOBALS['TL_LANG']['orm_avisota_recipient_source']['salutation_legend'] = 'Automatische Anrede';
 

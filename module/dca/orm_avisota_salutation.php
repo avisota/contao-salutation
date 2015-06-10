@@ -28,7 +28,6 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
 	'config'          => array
 	(
 		'dataContainer'    => 'General',
-		'ptable'           => 'orm_avisota_salutation_group',
 		'enableVersioning' => true,
 	),
 	// DataContainer

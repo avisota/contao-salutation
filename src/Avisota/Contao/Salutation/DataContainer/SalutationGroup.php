@@ -15,7 +15,6 @@
 
 namespace Avisota\Contao\Salutation\DataContainer;
 
-use Avisota\Contao\Entity\RecipientSource;
 use Avisota\Contao\Entity\Salutation;
 use Contao\Doctrine\ORM\EntityAccessor;
 use Contao\Doctrine\ORM\EntityHelper;

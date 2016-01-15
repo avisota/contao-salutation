@@ -16,7 +16,6 @@
 namespace Avisota\Contao\Salutation;
 
 use Avisota\Contao\Core\Recipient\SynonymizerService;
-use Avisota\Contao\Entity\Salutation;
 use Avisota\Contao\Entity\SalutationGroup;
 use Avisota\Contao\Message\Core\Renderer\TagReplacementService;
 use Avisota\Recipient\MutableRecipient;

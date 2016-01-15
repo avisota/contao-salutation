@@ -2,12 +2,12 @@
 
 /**
  * Avisota newsletter and mailing system
- * Copyright (C) 2013 Tristan Lins
+ * Copyright © 2016 Sven Baumann
  *
  * PHP version 5
  *
- * @copyright  bit3 UG 2013
- * @author     Tristan Lins <tristan.lins@bit3.de>
+ * @copyright  way.vision 2016
+ * @author     Sven Baumann <baumann.sv@gmail.com>
  * @package    avisota/contao-core
  * @license    LGPL-3.0+
  * @filesource
@@ -19,35 +19,46 @@ use Avisota\Contao\Core\Recipient\SynonymizerService;
 use Avisota\Contao\Entity\Salutation;
 use Avisota\Recipient\RecipientInterface;
 
+/**
+ * Class GenderDecider
+ *
+ * @package Avisota\Contao\Salutation
+ */
 class GenderDecider implements DeciderInterface
 {
-	public function accept(RecipientInterface $recipient, Salutation $salutation)
-	{
-		$fieldValue = $salutation->getGenderFilter();
-		if (!$salutation->getEnableGenderFilter() || empty($fieldValue)) {
-			return true;
-		}
+    /**
+     * @param RecipientInterface $recipient
+     * @param Salutation         $salutation
+     *
+     * @return bool
+     */
+    public function accept(RecipientInterface $recipient, Salutation $salutation)
+    {
+        $fieldValue = $salutation->getGenderFilter();
+        if (!$salutation->getEnableGenderFilter() || empty($fieldValue)) {
+            return true;
+        }
 
-		$details      = $recipient->getDetails();
-		$fieldName = 'gender';
+        $details   = $recipient->getDetails();
+        $fieldName = 'gender';
 
-		if (isset($details[$fieldName]) && $fieldValue == $details[$fieldName]) {
-			return true;
-		}
+        if (isset($details[$fieldName]) && $fieldValue == $details[$fieldName]) {
+            return true;
+        }
 
-		/** @var SynonymizerService $synonymizer */
-		$synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
-		$synonyms    = $synonymizer->findSynonyms('gender');
+        /** @var SynonymizerService $synonymizer */
+        $synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
+        $synonyms    = $synonymizer->findSynonyms('gender');
 
-		// try synonyms
-		if ($synonyms) {
-			foreach ($synonyms as $synonym) {
-				if (isset($details[$synonym]) && $fieldValue == $details[$synonym]) {
-					return true;
-				}
-			}
-		}
+        // try synonyms
+        if ($synonyms) {
+            foreach ($synonyms as $synonym) {
+                if (isset($details[$synonym]) && $fieldValue == $details[$synonym]) {
+                    return true;
+                }
+            }
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

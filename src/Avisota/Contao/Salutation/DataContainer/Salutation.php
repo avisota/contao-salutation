@@ -17,18 +17,18 @@ namespace Avisota\Contao\Salutation\DataContainer;
 
 class Salutation
 {
-	/**
-	 * Add the type of content element
-	 *
-	 * @param array
-	 *
-	 * @return string
-	 */
-	public function addElement($contentData)
-	{
-		return sprintf(
-			'<div>%s</div>' . "\n",
-			$contentData['salutation']
-		);
-	}
+    /**
+     * Add the type of content element
+     *
+     * @param array
+     *
+     * @return string
+     */
+    public function addElement($contentData)
+    {
+        return sprintf(
+            '<div>%s</div>' . "\n",
+            $contentData['salutation']
+        );
+    }
 }

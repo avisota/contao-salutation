@@ -21,33 +21,33 @@ use Avisota\Recipient\RecipientInterface;
 
 class GenderDecider implements DeciderInterface
 {
-	public function accept(RecipientInterface $recipient, Salutation $salutation)
-	{
-		$fieldValue = $salutation->getGenderFilter();
-		if (!$salutation->getEnableGenderFilter() || empty($fieldValue)) {
-			return true;
-		}
+    public function accept(RecipientInterface $recipient, Salutation $salutation)
+    {
+        $fieldValue = $salutation->getGenderFilter();
+        if (!$salutation->getEnableGenderFilter() || empty($fieldValue)) {
+            return true;
+        }
 
-		$details      = $recipient->getDetails();
-		$fieldName = 'gender';
+        $details   = $recipient->getDetails();
+        $fieldName = 'gender';
 
-		if (isset($details[$fieldName]) && $fieldValue == $details[$fieldName]) {
-			return true;
-		}
+        if (isset($details[$fieldName]) && $fieldValue == $details[$fieldName]) {
+            return true;
+        }
 
-		/** @var SynonymizerService $synonymizer */
-		$synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
-		$synonyms    = $synonymizer->findSynonyms('gender');
+        /** @var SynonymizerService $synonymizer */
+        $synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
+        $synonyms    = $synonymizer->findSynonyms('gender');
 
-		// try synonyms
-		if ($synonyms) {
-			foreach ($synonyms as $synonym) {
-				if (isset($details[$synonym]) && $fieldValue == $details[$synonym]) {
-					return true;
-				}
-			}
-		}
+        // try synonyms
+        if ($synonyms) {
+            foreach ($synonyms as $synonym) {
+                if (isset($details[$synonym]) && $fieldValue == $details[$synonym]) {
+                    return true;
+                }
+            }
+        }
 
-		return false;
-	}
+        return false;
+    }
 }

@@ -13,11 +13,10 @@
  * @filesource
  */
 
-
 /**
  * Fields
  */
 $GLOBALS['TL_LANG']['orm_avisota_recipient']['salutation'] = array(
-	'Salutation',
-	'Please choose the prefered salutation.'
+    'Salutation',
+    'Please choose the prefered salutation.'
 );

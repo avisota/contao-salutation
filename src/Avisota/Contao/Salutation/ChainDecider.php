@@ -20,28 +20,28 @@ use Avisota\Recipient\RecipientInterface;
 
 class ChainDecider implements DeciderInterface
 {
-	/**
-	 * @var DeciderInterface[]
-	 */
-	protected $deciders = array();
+    /**
+     * @var DeciderInterface[]
+     */
+    protected $deciders = array();
 
-	public function accept(RecipientInterface $recipient, Salutation $salutation)
-	{
-		foreach ($this->deciders as $decider) {
-			if (!$decider->accept($recipient, $salutation)) {
-				return false;
-			}
-		}
-		return true;
-	}
+    public function accept(RecipientInterface $recipient, Salutation $salutation)
+    {
+        foreach ($this->deciders as $decider) {
+            if (!$decider->accept($recipient, $salutation)) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-	public function addDecider(DeciderInterface $decider)
-	{
-		$this->deciders[spl_object_hash($decider)] = $decider;
-	}
+    public function addDecider(DeciderInterface $decider)
+    {
+        $this->deciders[spl_object_hash($decider)] = $decider;
+    }
 
-	public function removeDecider(DeciderInterface $decider)
-	{
-		unset($this->deciders[spl_object_hash($decider)]);
-	}
+    public function removeDecider(DeciderInterface $decider)
+    {
+        unset($this->deciders[spl_object_hash($decider)]);
+    }
 }

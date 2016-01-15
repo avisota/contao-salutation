@@ -21,49 +21,49 @@ use Avisota\Recipient\RecipientInterface;
 
 class Selector
 {
-	/**
-	 * @var DeciderInterface
-	 */
-	protected $decider;
+    /**
+     * @var DeciderInterface
+     */
+    protected $decider;
 
-	/**
-	 * Set the salutation decider.
-	 *
-	 * @param DeciderInterface $decider
-	 */
-	public function setDecider(DeciderInterface $decider)
-	{
-		$this->decider = $decider;
-		return $this;
-	}
+    /**
+     * Set the salutation decider.
+     *
+     * @param DeciderInterface $decider
+     */
+    public function setDecider(DeciderInterface $decider)
+    {
+        $this->decider = $decider;
+        return $this;
+    }
 
-	/**
-	 * Get the salutation decider.
-	 *
-	 * @return DeciderInterface
-	 */
-	public function getDecider()
-	{
-		return $this->decider;
-	}
+    /**
+     * Get the salutation decider.
+     *
+     * @return DeciderInterface
+     */
+    public function getDecider()
+    {
+        return $this->decider;
+    }
 
-	/**
-	 * Select a salutation from group.
-	 *
-	 * @param SalutationGroup $group
-	 *
-	 * @return null|Salutation
-	 */
-	public function selectSalutation(RecipientInterface $recipient, SalutationGroup $group)
-	{
-		$salutations = $group->getSalutations();
+    /**
+     * Select a salutation from group.
+     *
+     * @param SalutationGroup $group
+     *
+     * @return null|Salutation
+     */
+    public function selectSalutation(RecipientInterface $recipient, SalutationGroup $group)
+    {
+        $salutations = $group->getSalutations();
 
-		foreach ($salutations as $salutation) {
-			if ($this->decider->accept($recipient, $salutation)) {
-				return $salutation;
-			}
-		}
+        foreach ($salutations as $salutation) {
+            if ($this->decider->accept($recipient, $salutation)) {
+                return $salutation;
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 }

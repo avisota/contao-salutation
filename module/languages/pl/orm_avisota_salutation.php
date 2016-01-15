@@ -1,16 +1,16 @@
 <?php
+
 /**
  * Translations are managed using Transifex. To create a new translation
  * or to help to maintain an existing one, please register at transifex.com.
  *
- * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/avisota-contao/language/pl/
+ * @link    http://help.transifex.com/intro/translating.html
+ * @link    https://www.transifex.com/projects/p/avisota-contao/language/pl/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
  * last-updated: 2014-03-11T15:26:23+01:00
  */
-
 
 $GLOBALS['TL_LANG']['orm_avisota_salutation']['copy']['0']                       = 'Duplikuj powitanie';
 $GLOBALS['TL_LANG']['orm_avisota_salutation']['copy']['1']                       = 'Duplikuj powitanie ID %s';
@@ -38,4 +38,3 @@ $GLOBALS['TL_LANG']['orm_avisota_salutation']['salutation']['1']                
 $GLOBALS['TL_LANG']['orm_avisota_salutation']['salutation_legend']               = 'Powitanie';
 $GLOBALS['TL_LANG']['orm_avisota_salutation']['show']['0']                       = 'Szczegóły powitania';
 $GLOBALS['TL_LANG']['orm_avisota_salutation']['show']['1']                       = 'Pokaż szczegóły powitania ID %s';
-

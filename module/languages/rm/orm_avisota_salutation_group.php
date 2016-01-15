@@ -1,16 +1,16 @@
 <?php
+
 /**
  * Translations are managed using Transifex. To create a new translation
  * or to help to maintain an existing one, please register at transifex.com.
  *
- * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/avisota-contao/language/rm/
+ * @link    http://help.transifex.com/intro/translating.html
+ * @link    https://www.transifex.com/projects/p/avisota-contao/language/rm/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
  * last-updated: 2014-03-11T15:26:24+01:00
  */
-
 
 $GLOBALS['TL_LANG']['orm_avisota_salutation_group']['alias']['0']              = 'Alias';
 $GLOBALS['TL_LANG']['orm_avisota_salutation_group']['alias']['1']              = 'L\'alias da la gruppa è ina referenzà unica a la gruppa che po vegnir utilisada empè da l\'ID.';
@@ -32,4 +32,3 @@ $GLOBALS['TL_LANG']['orm_avisota_salutation_group']['show']['0']               =
 $GLOBALS['TL_LANG']['orm_avisota_salutation_group']['show']['1']               = 'Mussar ils detagls da la gruppa %s';
 $GLOBALS['TL_LANG']['orm_avisota_salutation_group']['title']['0']              = 'Titel';
 $GLOBALS['TL_LANG']['orm_avisota_salutation_group']['title']['1']              = 'Endatescha il titel da la gruppa da newsletters.';
-

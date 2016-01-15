@@ -13,13 +13,12 @@
  * @filesource
  */
 
-
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['orm_avisota_message_category']['salutation']   = array(
-	'Salutation',
-	'Please chose the salution used by this recipient source.'
+$GLOBALS['TL_LANG']['orm_avisota_message_category']['salutation'] = array(
+    'Salutation',
+    'Please chose the salution used by this recipient source.'
 );
 
 /**

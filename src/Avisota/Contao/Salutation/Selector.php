@@ -19,6 +19,11 @@ use Avisota\Contao\Entity\Salutation;
 use Avisota\Contao\Entity\SalutationGroup;
 use Avisota\Recipient\RecipientInterface;
 
+/**
+ * Class Selector
+ *
+ * @package Avisota\Contao\Salutation
+ */
 class Selector
 {
     /**
@@ -30,6 +35,8 @@ class Selector
      * Set the salutation decider.
      *
      * @param DeciderInterface $decider
+     *
+     * @return $this
      */
     public function setDecider(DeciderInterface $decider)
     {
@@ -50,9 +57,10 @@ class Selector
     /**
      * Select a salutation from group.
      *
-     * @param SalutationGroup $group
+     * @param RecipientInterface $recipient
+     * @param SalutationGroup    $group
      *
-     * @return null|Salutation
+     * @return Salutation|null
      */
     public function selectSalutation(RecipientInterface $recipient, SalutationGroup $group)
     {

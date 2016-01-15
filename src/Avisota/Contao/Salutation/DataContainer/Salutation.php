@@ -15,6 +15,11 @@
 
 namespace Avisota\Contao\Salutation\DataContainer;
 
+/**
+ * Class Salutation
+ *
+ * @package Avisota\Contao\Salutation\DataContainer
+ */
 class Salutation
 {
     /**

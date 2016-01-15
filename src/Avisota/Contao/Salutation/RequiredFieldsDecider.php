@@ -19,9 +19,20 @@ use Avisota\Contao\Core\Recipient\SynonymizerService;
 use Avisota\Contao\Entity\Salutation;
 use Avisota\Recipient\RecipientInterface;
 
+/**
+ * Class RequiredFieldsDecider
+ *
+ * @package Avisota\Contao\Salutation
+ */
 class RequiredFieldsDecider implements DeciderInterface
 {
-	public function accept(RecipientInterface $recipient, Salutation $salutation)
+	/**
+	 * @param RecipientInterface $recipient
+	 * @param Salutation         $salutation
+	 *
+	 * @return bool
+     */
+    public function accept(RecipientInterface $recipient, Salutation $salutation)
 	{
 		$requiredFields = $salutation->getRequiredFieldsFilter();
 		if (!$salutation->getEnableRequiredFieldsFilter() || empty($requiredFields)) {

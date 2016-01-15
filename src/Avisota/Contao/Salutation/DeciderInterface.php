@@ -23,5 +23,11 @@ use Avisota\Recipient\RecipientInterface;
  */
 interface DeciderInterface
 {
+    /**
+     * @param RecipientInterface $recipient
+     * @param Salutation         $salutation
+     *
+     * @return mixed
+     */
     public function accept(RecipientInterface $recipient, Salutation $salutation);
 }

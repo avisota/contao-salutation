@@ -16,6 +16,8 @@
 /**
  * Table orm_avisota_recipient_source
  * Entity Avisota\Contao:RecipientSource
+ *
+ * @param \ContaoCommunityAlliance\DcGeneral\Contao\Compatibility\DcCompat $dc
  */
 $GLOBALS['TL_DCA']['orm_avisota_recipient_source']['config']['onload_callback'][] = function (\ContaoCommunityAlliance\DcGeneral\Contao\Compatibility\DcCompat $dc) {
     $dataDefinition     = $dc->getEnvironment()->getDataDefinition();

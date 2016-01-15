@@ -23,6 +23,11 @@ use ContaoCommunityAlliance\Contao\Bindings\ContaoEvents;
 use ContaoCommunityAlliance\Contao\Bindings\Events\System\LoadLanguageFileEvent;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 
+/**
+ * Class SalutationGroup
+ *
+ * @package Avisota\Contao\Salutation\DataContainer
+ */
 class SalutationGroup extends \Controller
 {
     public function generate()

@@ -23,6 +23,11 @@ use Avisota\Recipient\MutableRecipient;
 use Avisota\Recipient\RecipientInterface;
 use Avisota\RecipientSource\RecipientSourceInterface;
 
+/**
+ * Class SalutationRecipientSource
+ *
+ * @package Avisota\Contao\Salutation
+ */
 class SalutationRecipientSource implements RecipientSourceInterface
 {
     /**
@@ -35,6 +40,12 @@ class SalutationRecipientSource implements RecipientSourceInterface
      */
     protected $group;
 
+    /**
+     * SalutationRecipientSource constructor.
+     *
+     * @param RecipientSourceInterface $recipientSource
+     * @param SalutationGroup          $group
+     */
     function __construct(RecipientSourceInterface $recipientSource, SalutationGroup $group)
     {
         $this->recipientSource = $recipientSource;
@@ -58,7 +69,9 @@ class SalutationRecipientSource implements RecipientSourceInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Count the recipients.
+     *
+     * @return int
      */
     public function countRecipients()
     {
@@ -66,7 +79,12 @@ class SalutationRecipientSource implements RecipientSourceInterface
     }
 
     /**
-     * {@inheritdoc}
+     * Get all recipients.
+     *
+     * @param int $limit  Limit result to given count.
+     * @param int $offset Skip certain count of recipients.
+     *
+     * @return RecipientInterface[]
      */
     public function getRecipients($limit = null, $offset = null)
     {

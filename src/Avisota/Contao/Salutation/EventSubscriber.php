@@ -26,8 +26,16 @@ use Avisota\Recipient\RecipientInterface;
 use Contao\Doctrine\ORM\EntityHelper;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * Class EventSubscriber
+ *
+ * @package Avisota\Contao\Salutation
+ */
 class EventSubscriber implements EventSubscriberInterface
 {
+    /**
+     * @return array
+     */
     public static function getSubscribedEvents()
     {
         return array(
@@ -37,6 +45,9 @@ class EventSubscriber implements EventSubscriberInterface
         );
     }
 
+    /**
+     * @param CreateRecipientSourceEvent $event
+     */
     public function injectSalutation(CreateRecipientSourceEvent $event)
     {
         $salutationGroupId = $event->getConfiguration()->getSalutation();
@@ -52,6 +63,9 @@ class EventSubscriber implements EventSubscriberInterface
         }
     }
 
+    /**
+     * @param CreateFakeRecipientEvent $event
+     */
     public function createFakeRecipient(CreateFakeRecipientEvent $event)
     {
         $recipient = $event->getRecipient();
@@ -60,6 +74,9 @@ class EventSubscriber implements EventSubscriberInterface
         $this->addSalutationToRecipient($recipient, $message);
     }
 
+    /**
+     * @param CreatePublicEmptyRecipientEvent $event
+     */
     public function createPublicEmptyRecipient(CreatePublicEmptyRecipientEvent $event)
     {
         $recipient = $event->getRecipient();
@@ -68,6 +85,10 @@ class EventSubscriber implements EventSubscriberInterface
         $this->addSalutationToRecipient($recipient, $message);
     }
 
+    /**
+     * @param RecipientInterface $recipient
+     * @param Message|null       $message
+     */
     protected function addSalutationToRecipient(RecipientInterface $recipient, Message $message = null)
     {
         if ($recipient->get('salutation') || !$message) {

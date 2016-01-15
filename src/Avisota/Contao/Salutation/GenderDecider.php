@@ -19,8 +19,19 @@ use Avisota\Contao\Core\Recipient\SynonymizerService;
 use Avisota\Contao\Entity\Salutation;
 use Avisota\Recipient\RecipientInterface;
 
+/**
+ * Class GenderDecider
+ *
+ * @package Avisota\Contao\Salutation
+ */
 class GenderDecider implements DeciderInterface
 {
+    /**
+     * @param RecipientInterface $recipient
+     * @param Salutation         $salutation
+     *
+     * @return bool
+     */
     public function accept(RecipientInterface $recipient, Salutation $salutation)
     {
         $fieldValue = $salutation->getGenderFilter();

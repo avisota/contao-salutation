@@ -24,11 +24,31 @@ use ContaoCommunityAlliance\DcGeneral\DC_General;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
+/**
+ * Class OptionsBuilder
+ *
+ * @package Avisota\Contao\Salutation\DataContainer
+ */
 class OptionsBuilder implements EventSubscriberInterface
 {
 	/**
-	 * {@inheritdoc}
-	 */
+	 * Returns an array of event names this subscriber wants to listen to.
+	 *
+	 * The array keys are event names and the value can be:
+	 *
+	 *  * The method name to call (priority defaults to 0)
+	 *  * An array composed of the method name to call and the priority
+	 *  * An array of arrays composed of the method names to call and respective
+	 *    priorities, or 0 if unset
+	 *
+	 * For instance:
+	 *
+	 *  * array('eventName' => 'methodName')
+	 *  * array('eventName' => array('methodName', $priority))
+	 *  * array('eventName' => array(array('methodName1', $priority), array('methodName2'))
+	 *
+	 * @return array The event names to listen to
+     */
 	static public function getSubscribedEvents()
 	{
 		return array(
@@ -36,6 +56,9 @@ class OptionsBuilder implements EventSubscriberInterface
 		);
 	}
 
+	/**
+	 * @param CreateOptionsEvent $event
+     */
 	public function createSalutationGroups(CreateOptionsEvent $event)
 	{
 		$this->getSalutationGroups($event->getDataContainer(), $event->getOptions());
@@ -45,6 +68,10 @@ class OptionsBuilder implements EventSubscriberInterface
 	 * Get a list of salutation groups.
 	 *
 	 * @param DC_General $dc
+	 *
+	 * @param array      $options
+	 *
+	 * @return array
 	 */
 	public function getSalutationGroups($dc, $options = array())
 	{

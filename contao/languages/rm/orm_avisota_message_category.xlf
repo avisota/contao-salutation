@@ -1,0 +1,21 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-31T04:01:01+02:00" original="orm_avisota_message_category" source-language="en" target-language="rm">
+    <body>
+      <trans-unit id="orm_avisota_message_category.salutation.0">
+        <source>Salutation</source>
+        <target>Salid</target>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_message_category.salutation.1">
+        <source>Please chose the salution used by this recipient source.</source>
+        <target>Tscherna il salid utilisà da questa funtauna da destinaturs.</target>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_message_category.salutation_legend">
+        <source>Automated saluation</source>
+        <target>Salid automatisà</target>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

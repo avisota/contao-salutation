@@ -4,132 +4,152 @@
       <trans-unit id="orm_avisota_salutation.salutation.0">
         <source>Salutation</source>
         <target>Anrede</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.salutation.1">
         <source>Please enter the salutation.</source>
         <target>Bitte geben Sie die Anrede an.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.enableGenderFilter.0">
         <source>Filter by Gender</source>
         <target>Nach Geschlecht filtern</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.enableGenderFilter.1">
         <source>Choose to enable this salutation only for a specific gender.</source>
         <target>Auswählen, um diese Anrede nur für ein bestimmtes Geschlecht zu altivieren.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.genderFilter.0">
         <source>Gender</source>
         <target>Geschlecht</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.genderFilter.1">
         <source>Please select the gender that is required for this salutation.</source>
         <target>Bitte wählen Sie das Geschlecht aus, für das diese Anrede benutzt wird.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.enableRequiredFieldsFilter.0">
         <source>Filter by required fields</source>
         <target>Nach benötigten Feldern filtern </target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.enableRequiredFieldsFilter.1">
         <source>Choose to enable this salutation only if selected fields are filled.</source>
         <target>Diese Anrede nur benutzen falls die ausgewählten Felder gefüllt sind.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.requiredFieldsFilter.0">
         <source>Required fields</source>
         <target>Benötigte Felder</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.requiredFieldsFilter.1">
         <source>Please select the fields that are required for this salutation.</source>
         <target>Bitte wählen SIe die für diese Anrede benötigten Felder aus.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.salutation_legend">
         <source>Salutation</source>
         <target>Anrede</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.filter_legend">
         <source>Filter settings</source>
         <target>Filtereinstellungen</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.gender.male">
         <source>Male</source>
         <target>Männlich</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.gender.female">
         <source>Female</source>
         <target>Weiblich</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.new.0">
         <source>New salutation</source>
         <target>Neue Anrede</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.new.1">
         <source>Create a new salutation</source>
         <target>Neue Anrede erstellen</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.show.0">
         <source>Salutation details</source>
         <target>Anrede-Details</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.show.1">
         <source>Show the details of salutation ID %s</source>
         <target>Die Details der Anrede ID %s anzeigen.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.edit.0">
         <source>Edit salutation</source>
         <target>Anrede bearbeiten</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.edit.1">
         <source>Edit salutation ID %s</source>
         <target>Anrede ID %s bearbeiten.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.editheader.0">
         <source>Edit salutation settings</source>
         <target>Anredeeinstellungen bearbeiten</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.editheader.1">
         <source>Edit salutation settings ID %s</source>
         <target>Bearbeiten Sie die Einstellungen für die Anrede ID %s.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.copy.0">
         <source>Duplicate salutation</source>
         <target>Anrede kopieren</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.copy.1">
         <source>Duplicate salutation ID %s</source>
         <target>Anrede ID %s kopieren.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.delete.0">
         <source>Delete salutation</source>
         <target>Anrede löschen</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.delete.1">
         <source>Delete salutation ID %s</source>
         <target>Anrede ID %s löschen.</target>
-        
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.pastenew.0">
+        <source>Add new at the top</source>
+        <target>Neue Anrede oben erstellen</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.pastenew.1">
+        <source>Add new after salutation ID %s</source>
+        <target>Neue Anrede nach Anrede mit ID %s</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.cut.0">
+        <source>Move salutation</source>
+        <target>Anrede verschieben</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.cut.1">
+        <source>Move salutation ID %s</source>
+        <target>Anrede mit ID %s verschieben</target>
+
       </trans-unit>
     </body>
   </file>

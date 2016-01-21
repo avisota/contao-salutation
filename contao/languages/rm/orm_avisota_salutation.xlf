@@ -4,132 +4,148 @@
       <trans-unit id="orm_avisota_salutation.salutation.0">
         <source>Salutation</source>
         <target>Salid</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.salutation.1">
         <source>Please enter the salutation.</source>
         <target>Endatscha il salid</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.enableGenderFilter.0">
         <source>Filter by Gender</source>
         <target>Filtrar tenor schlattaina</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.enableGenderFilter.1">
         <source>Choose to enable this salutation only for a specific gender.</source>
         <target>Tscherna per activar quest salid be per ina schlattaina specifica.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.genderFilter.0">
         <source>Gender</source>
         <target>Schlattaina</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.genderFilter.1">
         <source>Please select the gender that is required for this salutation.</source>
         <target>Tscherna la schlattaina ch'è necessaria per quest salid.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.enableRequiredFieldsFilter.0">
         <source>Filter by required fields</source>
         <target>Filtrar tenor ils champs necessaris</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.enableRequiredFieldsFilter.1">
         <source>Choose to enable this salutation only if selected fields are filled.</source>
         <target>Tscherna quai per activar quest salids be sche ils chamsp selecziunads èn emplenids</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.requiredFieldsFilter.0">
         <source>Required fields</source>
         <target>Champs necessaris</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.requiredFieldsFilter.1">
         <source>Please select the fields that are required for this salutation.</source>
         <target>Tscherna ils chamsp ch'èn necessaris per quest salid.</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.salutation_legend">
         <source>Salutation</source>
         <target>Salid</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.filter_legend">
         <source>Filter settings</source>
         <target>Configuraziun da filtrar</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.gender.male">
         <source>Male</source>
         <target>Masculin</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.gender.female">
         <source>Female</source>
         <target>Feminin</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.new.0">
         <source>New salutation</source>
         <target>Nov salid</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.new.1">
         <source>Create a new salutation</source>
         <target>Crear in nov salid</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.show.0">
         <source>Salutation details</source>
         <target>Detagls dal salid</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.show.1">
         <source>Show the details of salutation ID %s</source>
         <target>Mussar ils detagls dal salid cun l'ID %s</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.edit.0">
         <source>Edit salutation</source>
         <target>Modifitgar il salid</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.edit.1">
         <source>Edit salutation ID %s</source>
         <target>Modifitgar il salid cun l'ID %s</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.editheader.0">
         <source>Edit salutation settings</source>
         <target>Modifitgar la configuraziun dal salid</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.editheader.1">
         <source>Edit salutation settings ID %s</source>
         <target>Modifitgar la configuraziun dal salid cun l'ID %s</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.copy.0">
         <source>Duplicate salutation</source>
         <target>Duplitgar il salid</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.copy.1">
         <source>Duplicate salutation ID %s</source>
         <target>Duplitgar il salid cun l'ID %s</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.delete.0">
         <source>Delete salutation</source>
         <target>Stizzar il salid</target>
-        
+
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.delete.1">
         <source>Delete salutation ID %s</source>
         <target>Stizzar il salid cun l'ID %s</target>
-        
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.pastenew.0">
+        <source>Add new at the top</source>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.pastenew.1">
+        <source>Add new after salutation ID %s</source>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.cut.0">
+        <source>Move salutation</source>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.cut.1">
+        <source>Move salutation ID %s</source>
+
       </trans-unit>
     </body>
   </file>

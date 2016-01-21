@@ -1,0 +1,86 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-06T04:02:56+02:00" original="orm_avisota_salutation_group" source-language="en" target-language="ru-RU">
+    <body>
+      <trans-unit id="orm_avisota_salutation_group.title.0">
+        <source>Title</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.title.1">
+        <source>Please enter the newsletter group title.</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.alias.0">
+        <source>Alias</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.alias.1">
+        <source>The group alias is a unique reference to the group which can be called instead of its ID.</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.salutation_group_legend">
+        <source>Group</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.generate.0">
+        <source>Generate default group</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.generate.1">
+        <source>Generate a default group, containing predefined salutations in the current language.</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.new.0">
+        <source>New group</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.new.1">
+        <source>Create a new group</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.show.0">
+        <source>Group details</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.show.1">
+        <source>Show the details of group ID %s</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.edit.0">
+        <source>Edit group</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.edit.1">
+        <source>Edit group ID %s</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.editheader.0">
+        <source>Edit group settings</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.editheader.1">
+        <source>Edit group settings ID %s</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.copy.0">
+        <source>Duplicate group</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.copy.1">
+        <source>Duplicate group ID %s</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.delete.0">
+        <source>Delete group</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.delete.1">
+        <source>Delete group ID %s</source>
+        
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation_group.group_generated">
+        <source>A new default group has been generated.</source>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

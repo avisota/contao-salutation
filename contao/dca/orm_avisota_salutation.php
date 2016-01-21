@@ -124,6 +124,8 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
                 'href'  => 'act=show',
                 'icon'  => 'show.gif'
             )
+            // TODO pastenew add the id
+            // TODO cut add description
         ),
     ),
     // Palettes

@@ -1,0 +1,57 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-06T04:02:56+02:00" original="avisota_salutation" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="avisota_salutation.0">
+        <source>Dear Sir ##title## ##forename## ##surname##</source>
+        <target>Sehr geehrter ##title## ##forename## ##surname##</target>
+        
+      </trans-unit>
+      <trans-unit id="avisota_salutation.1">
+        <source>Dear Madam ##title## ##forename## ##surname##</source>
+        <target>Sehr geehrte ##title## ##forename## ##surname##</target>
+        
+      </trans-unit>
+      <trans-unit id="avisota_salutation.2">
+        <source>Dear Sir ##forename## ##surname##</source>
+        <target>Lieber Herr  ##forename## ##surname##</target>
+        
+      </trans-unit>
+      <trans-unit id="avisota_salutation.3">
+        <source>Dear Madam ##forename## ##surname##</source>
+        <target>Liebe Frau ##forename## ##surname##</target>
+        
+      </trans-unit>
+      <trans-unit id="avisota_salutation.4">
+        <source>Dear Sir ##surname##</source>
+        <target>Lieber Herr ##surname##</target>
+        
+      </trans-unit>
+      <trans-unit id="avisota_salutation.5">
+        <source>Dear Madam ##surname##</source>
+        <target>Liebe Frau ##surname##</target>
+        
+      </trans-unit>
+      <trans-unit id="avisota_salutation.6">
+        <source>Dear Sir or Madam ##title## ##forename## ##surname##</source>
+        <target>Sehr geehrte/r Frau/Herr ##title## ##forename## ##surname##</target>
+        
+      </trans-unit>
+      <trans-unit id="avisota_salutation.7">
+        <source>Dear Sir or Madam ##forename## ##surname##</source>
+        <target>Sehr geehrte/r Frau/Herr ##forename ## ##surname##</target>
+        
+      </trans-unit>
+      <trans-unit id="avisota_salutation.8">
+        <source>Dear Sir or Madam ##surname##</source>
+        <target>Sehr geehrte/r Frau/Herr ##surname##</target>
+        
+      </trans-unit>
+      <trans-unit id="avisota_salutation.9">
+        <source>Dear subscriber</source>
+        <target>Sehr geehrte Empfängerin,
+Sehr geehrter Empfänger,</target>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

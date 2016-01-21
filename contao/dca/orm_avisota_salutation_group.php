@@ -82,6 +82,7 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
         ),
         'global_operations' => array
         (
+            // TODO make selected for language generate groups
             'generate' => array
             (
                 'label'      => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['generate'],

@@ -1,0 +1,22 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-06T04:02:56+02:00" original="modules" source-language="en" target-language="it">
+    <body>
+      <trans-unit id="MOD.avisota-salutation.0">
+        <source>Avisota - Salutation</source>
+        
+      </trans-unit>
+      <trans-unit id="MOD.avisota-salutation.1">
+        <source>Manage flexible and dynamic salutations for Avisota messages.</source>
+        
+      </trans-unit>
+      <trans-unit id="MOD.avisota_salutation.0">
+        <source>Salutation</source>
+        
+      </trans-unit>
+      <trans-unit id="MOD.avisota_salutation.1">
+        <source>Manage salutations.</source>
+        
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

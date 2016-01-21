@@ -1,0 +1,152 @@
+<?xml version="1.0" ?><xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file datatype="php" date="2014-05-06T04:02:56+02:00" original="orm_avisota_salutation" source-language="en" target-language="pl">
+    <body>
+      <trans-unit id="orm_avisota_salutation.salutation.0">
+        <source>Salutation</source>
+        <target>Powitanie</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.salutation.1">
+        <source>Please enter the salutation.</source>
+        <target>Proszę wprowadzić powitanie</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.enableGenderFilter.0">
+        <source>Filter by Gender</source>
+        <target>Filtru po płci</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.enableGenderFilter.1">
+        <source>Choose to enable this salutation only for a specific gender.</source>
+        <target>Wybierz, aby włączyć to powitanie tylko dla określonej płci.</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.genderFilter.0">
+        <source>Gender</source>
+        <target>Płeć</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.genderFilter.1">
+        <source>Please select the gender that is required for this salutation.</source>
+        <target>Proszę wybrać płeć, która jest wymagana dla tego powitania.</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.enableRequiredFieldsFilter.0">
+        <source>Filter by required fields</source>
+        <target>Filtruj po wymaganych polach</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.enableRequiredFieldsFilter.1">
+        <source>Choose to enable this salutation only if selected fields are filled.</source>
+        <target>Wybierz, jeśli powitanie ma być użyte w przypadku, gdy określone pola zostały wypełnione.</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.requiredFieldsFilter.0">
+        <source>Required fields</source>
+        <target>Wymagane pola</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.requiredFieldsFilter.1">
+        <source>Please select the fields that are required for this salutation.</source>
+        <target>Proszę wybrać pola, które są wymagane dla tego powitania.</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.salutation_legend">
+        <source>Salutation</source>
+        <target>Powitanie</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.filter_legend">
+        <source>Filter settings</source>
+        <target>Ustawienia filtrów</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.gender.male">
+        <source>Male</source>
+        <target>Mężczyzna</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.gender.female">
+        <source>Female</source>
+        <target>Kobieta</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.new.0">
+        <source>New salutation</source>
+        <target>Nowe powitanie</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.new.1">
+        <source>Create a new salutation</source>
+        <target>Utwórz nowe powitanie</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.show.0">
+        <source>Salutation details</source>
+        <target>Szczegóły powitania</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.show.1">
+        <source>Show the details of salutation ID %s</source>
+        <target>Pokaż szczegóły powitania ID %s</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.edit.0">
+        <source>Edit salutation</source>
+        <target>Edytuj powitanie</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.edit.1">
+        <source>Edit salutation ID %s</source>
+        <target>Edytuj powitanie ID %s</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.editheader.0">
+        <source>Edit salutation settings</source>
+        <target>Edytuj ustawienia powitania</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.editheader.1">
+        <source>Edit salutation settings ID %s</source>
+        <target>Edytuj ustawienia powitania ID %s</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.copy.0">
+        <source>Duplicate salutation</source>
+        <target>Duplikuj powitanie</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.copy.1">
+        <source>Duplicate salutation ID %s</source>
+        <target>Duplikuj powitanie ID %s</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.delete.0">
+        <source>Delete salutation</source>
+        <target>Usuń powitanie</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.delete.1">
+        <source>Delete salutation ID %s</source>
+        <target>Usuń powitanie ID %s</target>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.pastenew.0">
+        <source>Add new at the top</source>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.pastenew.1">
+        <source>Add new after salutation ID %s</source>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.cut.0">
+        <source>Move salutation</source>
+
+      </trans-unit>
+      <trans-unit id="orm_avisota_salutation.cut.1">
+        <source>Move salutation ID %s</source>
+
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

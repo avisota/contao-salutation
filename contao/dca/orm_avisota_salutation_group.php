@@ -126,7 +126,9 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
                 'label'      => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['delete'],
                 'href'       => 'act=delete',
                 'icon'       => 'delete.gif',
-                'attributes' => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"',
+                'attributes' =>
+                    'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) ' .
+                    'return false; Backend.getScrollOffset();"',
             ),
             'show'       => array
             (

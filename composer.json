@@ -43,6 +43,11 @@
             "Avisota\\Contao\\Salutation\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Avisota\\Test\\Contao\\Salutation\\": "tests/Test/"
+        }
+    },
     "extra": {
         "contao": {
             "sources": {

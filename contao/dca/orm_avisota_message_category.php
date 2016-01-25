@@ -24,9 +24,13 @@ $GLOBALS['TL_DCA']['orm_avisota_message_category']['fields']['salutation'] = arr
     'default'          => false,
     'label'            => &$GLOBALS['TL_LANG']['orm_avisota_message_category']['salutation'],
     'inputType'        => 'select',
-    'options_callback' => \ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory::createCallback(
-        'avisota.create-salutation-group-options',
-        'Avisota\Contao\Core\Event\CreateOptionsEvent'
+    'eval'             => array(
+        'tl_class'           => 'w50',
+        'includeBlankOption' => true
     ),
-    'eval'             => array('tl_class' => 'w50', 'includeBlankOption' => true)
+    'options_callback' =>
+        \ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory::createCallback(
+            'avisota.create-salutation-group-options',
+            'Avisota\Contao\Core\Event\CreateOptionsEvent'
+        ),
 );

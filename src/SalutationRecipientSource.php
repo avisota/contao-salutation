@@ -45,7 +45,7 @@ class SalutationRecipientSource implements RecipientSourceInterface
      * @param RecipientSourceInterface $recipientSource
      * @param SalutationGroup          $group
      */
-    function __construct(RecipientSourceInterface $recipientSource, SalutationGroup $group)
+    public function __construct(RecipientSourceInterface $recipientSource, SalutationGroup $group)
     {
         $this->recipientSource = $recipientSource;
         $this->group           = $group;
@@ -87,14 +87,16 @@ class SalutationRecipientSource implements RecipientSourceInterface
      */
     public function getRecipients($limit = null, $offset = null)
     {
+        global $container;
+
         $recipients = $this->recipientSource->getRecipients($limit, $offset);
 
         if (count($recipients)) {
             /** @var Selector $selector */
-            $selector = $GLOBALS['container']['avisota.salutation.selector'];
+            $selector = $container['avisota.salutation.selector'];
 
             /** @var TagReplacementService $tagReplacer */
-            $tagReplacer = $GLOBALS['container']['avisota.message.tagReplacementEngine'];
+            $tagReplacer = $container['avisota.message.tagReplacementEngine'];
 
             foreach ($recipients as $recipient) {
                 if ($recipient->get('salutation')) {
@@ -112,7 +114,7 @@ class SalutationRecipientSource implements RecipientSourceInterface
                 }
 
                 /** @var SynonymizerService $synonymizer */
-                $synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
+                $synonymizer = $container['avisota.recipient.synonymizer'];
 
                 $pattern = $salutation->getSalutation();
                 $details = $synonymizer->expandDetailsWithSynonyms($recipient);

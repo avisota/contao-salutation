@@ -34,6 +34,8 @@ class GenderDecider implements DeciderInterface
      */
     public function accept(RecipientInterface $recipient, Salutation $salutation)
     {
+        global $container;
+
         $fieldValue = $salutation->getGenderFilter();
         if (!$salutation->getEnableGenderFilter() || empty($fieldValue)) {
             return true;
@@ -47,7 +49,7 @@ class GenderDecider implements DeciderInterface
         }
 
         /** @var SynonymizerService $synonymizer */
-        $synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
+        $synonymizer = $container['avisota.recipient.synonymizer'];
         $synonyms    = $synonymizer->findSynonyms('gender');
 
         // try synonyms

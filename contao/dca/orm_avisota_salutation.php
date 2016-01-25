@@ -116,7 +116,9 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
                 'label'      => &$GLOBALS['TL_LANG']['orm_avisota_salutation']['delete'],
                 'href'       => 'act=delete',
                 'icon'       => 'delete.gif',
-                'attributes' => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"'
+                'attributes' =>
+                    'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) ' .
+                    'return false; Backend.getScrollOffset();"'
             ),
             'show'   => array
             (
@@ -197,7 +199,12 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
             'exclude'   => true,
             'search'    => true,
             'inputType' => 'text',
-            'eval'      => array('maxlength' => 255, 'mandatory' => true, 'decodeEntities' => true, 'tl_class' => 'clr'),
+            'eval'      => array(
+                'maxlength'      => 255,
+                'mandatory'      => true,
+                'decodeEntities' => true,
+                'tl_class'       => 'clr'
+            ),
         ),
         'enableGenderFilter'         => array
         (
@@ -228,15 +235,18 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
             'label'            => &$GLOBALS['TL_LANG']['orm_avisota_salutation']['requiredFieldsFilter'],
             'exclude'          => true,
             'inputType'        => 'checkbox',
-            'options_callback' => \ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory::createCallback(
-                'avisota.create-salutation-recipient-field-options',
-                'Avisota\Contao\Core\Event\CreateOptionsEvent'
-            ),
             'eval'             => array(
                 'mandatory' => true,
                 'multiple'  => true
             ),
-            'field'            => array('nullable' => true),
+            'field'            => array(
+                'nullable' => true
+            ),
+            'options_callback' =>
+                \ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEventCallbackFactory::createCallback(
+                    'avisota.create-salutation-recipient-field-options',
+                    'Avisota\Contao\Core\Event\CreateOptionsEvent'
+                ),
         ),
     )
 );

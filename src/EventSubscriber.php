@@ -47,6 +47,7 @@ class EventSubscriber implements EventSubscriberInterface
 
     /**
      * @param CreateRecipientSourceEvent $event
+     * @SuppressWarnings(PHPMD.LongVariable)
      */
     public function injectSalutation(CreateRecipientSourceEvent $event)
     {
@@ -88,9 +89,12 @@ class EventSubscriber implements EventSubscriberInterface
     /**
      * @param RecipientInterface $recipient
      * @param Message|null       $message
+     * @SuppressWarnings(PHPMD.LongVariable)
      */
     protected function addSalutationToRecipient(RecipientInterface $recipient, Message $message = null)
     {
+        global $container;
+
         if ($recipient->get('salutation') || !$message) {
             return;
         }
@@ -109,10 +113,10 @@ class EventSubscriber implements EventSubscriberInterface
         }
 
         /** @var Selector $selector */
-        $selector = $GLOBALS['container']['avisota.salutation.selector'];
+        $selector = $container['avisota.salutation.selector'];
 
         /** @var TagReplacementService $tagReplacer */
-        $tagReplacer = $GLOBALS['container']['avisota.message.tagReplacementEngine'];
+        $tagReplacer = $container['avisota.message.tagReplacementEngine'];
 
         if (!$recipient instanceof MutableRecipient) {
             $recipient = new MutableRecipient($recipient->getEmail(), $recipient->getDetails());

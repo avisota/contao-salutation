@@ -26,42 +26,44 @@ use Avisota\Recipient\RecipientInterface;
  */
 class RequiredFieldsDecider implements DeciderInterface
 {
-	/**
-	 * @param RecipientInterface $recipient
-	 * @param Salutation         $salutation
-	 *
-	 * @return bool
+    /**
+     * @param RecipientInterface $recipient
+     * @param Salutation         $salutation
+     *
+     * @return bool
      */
     public function accept(RecipientInterface $recipient, Salutation $salutation)
-	{
-		$requiredFields = $salutation->getRequiredFieldsFilter();
-		if (!$salutation->getEnableRequiredFieldsFilter() || empty($requiredFields)) {
-			return true;
-		}
+    {
+        global $container;
 
-		$details = $recipient->getDetails();
-		foreach ($requiredFields as $requiredField) {
-			if (empty($details[$requiredField])) {
-				/** @var SynonymizerService $synonymizer */
-				$synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
-				$synonyms    = $synonymizer->findSynonyms($requiredField);
-				$stillEmpty  = true;
+        $requiredFields = $salutation->getRequiredFieldsFilter();
+        if (!$salutation->getEnableRequiredFieldsFilter() || empty($requiredFields)) {
+            return true;
+        }
 
-				if ($synonyms) {
-					foreach ($synonyms as $synonym) {
-						if (!empty($details[$synonym])) {
-							$stillEmpty = false;
-							break;
-						}
-					}
-				}
+        $details = $recipient->getDetails();
+        foreach ($requiredFields as $requiredField) {
+            if (empty($details[$requiredField])) {
+                /** @var SynonymizerService $synonymizer */
+                $synonymizer = $container['avisota.recipient.synonymizer'];
+                $synonyms    = $synonymizer->findSynonyms($requiredField);
+                $stillEmpty  = true;
 
-				if ($stillEmpty) {
-					return false;
-				}
-			}
-		}
+                if ($synonyms) {
+                    foreach ($synonyms as $synonym) {
+                        if (!empty($details[$synonym])) {
+                            $stillEmpty = false;
+                            break;
+                        }
+                    }
+                }
 
-		return true;
-	}
+                if ($stillEmpty) {
+                    return false;
+                }
+            }
+        }
+
+        return true;
+    }
 }

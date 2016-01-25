@@ -29,61 +29,63 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class OptionsBuilder implements EventSubscriberInterface
 {
-	/**
-	 * Returns an array of event names this subscriber wants to listen to.
-	 *
-	 * The array keys are event names and the value can be:
-	 *
-	 *  * The method name to call (priority defaults to 0)
-	 *  * An array composed of the method name to call and the priority
-	 *  * An array of arrays composed of the method names to call and respective
-	 *    priorities, or 0 if unset
-	 *
-	 * For instance:
-	 *
-	 *  * array('eventName' => 'methodName')
-	 *  * array('eventName' => array('methodName', $priority))
-	 *  * array('eventName' => array(array('methodName1', $priority), array('methodName2'))
-	 *
-	 * @return array The event names to listen to
+    /**
+     * Returns an array of event names this subscriber wants to listen to.
+     *
+     * The array keys are event names and the value can be:
+     *
+     *  * The method name to call (priority defaults to 0)
+     *  * An array composed of the method name to call and the priority
+     *  * An array of arrays composed of the method names to call and respective
+     *    priorities, or 0 if unset
+     *
+     * For instance:
+     *
+     *  * array('eventName' => 'methodName')
+     *  * array('eventName' => array('methodName', $priority))
+     *  * array('eventName' => array(array('methodName1', $priority), array('methodName2'))
+     *
+     * @return array The event names to listen to
      */
-	static public function getSubscribedEvents()
-	{
-		return array(
-			'avisota.create-salutation-group-options'            => 'createSalutationGroups',
-		);
-	}
+    public static function getSubscribedEvents()
+    {
+        return array(
+            'avisota.create-salutation-group-options' => 'createSalutationGroups',
+        );
+    }
 
-	/**
-	 * @param CreateOptionsEvent $event
+    /**
+     * @param CreateOptionsEvent $event
      */
-	public function createSalutationGroups(CreateOptionsEvent $event)
-	{
-		$this->getSalutationGroups($event->getDataContainer(), $event->getOptions());
-	}
+    public function createSalutationGroups(CreateOptionsEvent $event)
+    {
+        $this->getSalutationGroups($event->getDataContainer(), $event->getOptions());
+    }
 
-	/**
-	 * Get a list of salutation groups.
-	 *
-	 * @param DC_General $dc
-	 *
-	 * @param array      $options
-	 *
-	 * @return array
-	 */
-	public function getSalutationGroups($dc, $options = array())
-	{
-		if ($dc instanceof DcCompat && $dc->getModel()) {
-			$salutationGroupRepository = EntityHelper::getRepository('Avisota\Contao:SalutationGroup');
-			/** @var SalutationGroup[] $salutationGroups */
-			$salutationGroups = $salutationGroupRepository->findAll();
+    /**
+     * Get a list of salutation groups.
+     *
+     * @param DC_General $dc
+     *
+     * @param array      $options
+     *
+     * @return array
+     * @SuppressWarnings(PHPMD.ShortVariable)
+     * @SuppressWarnings(PHPMD.LongVariable)
+     */
+    public function getSalutationGroups($dc, $options = array())
+    {
+        if ($dc instanceof DcCompat && $dc->getModel()) {
+            $salutationGroupRepository = EntityHelper::getRepository('Avisota\Contao:SalutationGroup');
+            /** @var SalutationGroup[] $salutationGroups */
+            $salutationGroups = $salutationGroupRepository->findAll();
 
-			foreach ($salutationGroups as $salutationGroup) {
-				$options[$salutationGroup->getId()] = $salutationGroup->getTitle();
-			}
-			return $options;
-		}
+            foreach ($salutationGroups as $salutationGroup) {
+                $options[$salutationGroup->getId()] = $salutationGroup->getTitle();
+            }
+            return $options;
+        }
 
-		return array();
-	}
+        return array();
+    }
 }

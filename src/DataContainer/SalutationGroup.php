@@ -15,7 +15,6 @@
 
 namespace Avisota\Contao\Salutation\DataContainer;
 
-use Avisota\Contao\Entity\Salutation;
 use Contao\Doctrine\ORM\EntityAccessor;
 use Contao\Doctrine\ORM\EntityHelper;
 use ContaoCommunityAlliance\Contao\Bindings\ContaoEvents;
@@ -26,6 +25,8 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
  * Class SalutationGroup
  *
  * @package Avisota\Contao\Salutation\DataContainer
+ * @SuppressWarnings(PHPMD.Superglobals)
+ * @SuppressWarnings(PHPMD.LongVariable)
  */
 class SalutationGroup extends \Controller
 {
@@ -56,7 +57,7 @@ class SalutationGroup extends \Controller
 
         $sorting = 64;
         foreach ($predefinedSalutations as $index => $predefinedSalutation) {
-            $salutation = new Salutation();
+            $salutation = new \Avisota\Contao\Entity\Salutation();
 
             $entityAccessor->setProperties($salutation, $predefinedSalutation);
 

@@ -47,6 +47,7 @@ class EventSubscriber implements EventSubscriberInterface
 
     /**
      * @param CreateRecipientSourceEvent $event
+     * @SuppressWarnings(PHPMD.LongVariable)
      */
     public function injectSalutation(CreateRecipientSourceEvent $event)
     {
@@ -88,6 +89,7 @@ class EventSubscriber implements EventSubscriberInterface
     /**
      * @param RecipientInterface $recipient
      * @param Message|null       $message
+     * @SuppressWarnings(PHPMD.LongVariable)
      */
     protected function addSalutationToRecipient(RecipientInterface $recipient, Message $message = null)
     {

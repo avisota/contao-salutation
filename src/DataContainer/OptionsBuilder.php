@@ -70,6 +70,8 @@ class OptionsBuilder implements EventSubscriberInterface
      * @param array      $options
      *
      * @return array
+     * @SuppressWarnings(PHPMD.ShortVariable)
+     * @SuppressWarnings(PHPMD.LongVariable)
      */
     public function getSalutationGroups($dc, $options = array())
     {

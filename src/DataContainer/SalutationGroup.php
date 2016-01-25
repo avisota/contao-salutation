@@ -26,6 +26,8 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
  * Class SalutationGroup
  *
  * @package Avisota\Contao\Salutation\DataContainer
+ * @SuppressWarnings(PHPMD.Superglobals)
+ * @SuppressWarnings(PHPMD.LongVariable)
  */
 class SalutationGroup extends \Controller
 {

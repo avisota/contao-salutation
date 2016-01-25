@@ -26,42 +26,42 @@ use Avisota\Recipient\RecipientInterface;
  */
 class RequiredFieldsDecider implements DeciderInterface
 {
-	/**
-	 * @param RecipientInterface $recipient
-	 * @param Salutation         $salutation
-	 *
-	 * @return bool
+    /**
+     * @param RecipientInterface $recipient
+     * @param Salutation         $salutation
+     *
+     * @return bool
      */
     public function accept(RecipientInterface $recipient, Salutation $salutation)
-	{
-		$requiredFields = $salutation->getRequiredFieldsFilter();
-		if (!$salutation->getEnableRequiredFieldsFilter() || empty($requiredFields)) {
-			return true;
-		}
+    {
+        $requiredFields = $salutation->getRequiredFieldsFilter();
+        if (!$salutation->getEnableRequiredFieldsFilter() || empty($requiredFields)) {
+            return true;
+        }
 
-		$details = $recipient->getDetails();
-		foreach ($requiredFields as $requiredField) {
-			if (empty($details[$requiredField])) {
-				/** @var SynonymizerService $synonymizer */
-				$synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
-				$synonyms    = $synonymizer->findSynonyms($requiredField);
-				$stillEmpty  = true;
+        $details = $recipient->getDetails();
+        foreach ($requiredFields as $requiredField) {
+            if (empty($details[$requiredField])) {
+                /** @var SynonymizerService $synonymizer */
+                $synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
+                $synonyms    = $synonymizer->findSynonyms($requiredField);
+                $stillEmpty  = true;
 
-				if ($synonyms) {
-					foreach ($synonyms as $synonym) {
-						if (!empty($details[$synonym])) {
-							$stillEmpty = false;
-							break;
-						}
-					}
-				}
+                if ($synonyms) {
+                    foreach ($synonyms as $synonym) {
+                        if (!empty($details[$synonym])) {
+                            $stillEmpty = false;
+                            break;
+                        }
+                    }
+                }
 
-				if ($stillEmpty) {
-					return false;
-				}
-			}
-		}
+                if ($stillEmpty) {
+                    return false;
+                }
+            }
+        }
 
-		return true;
-	}
+        return true;
+    }
 }

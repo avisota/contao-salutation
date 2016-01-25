@@ -45,7 +45,7 @@ class SalutationRecipientSource implements RecipientSourceInterface
      * @param RecipientSourceInterface $recipientSource
      * @param SalutationGroup          $group
      */
-    function __construct(RecipientSourceInterface $recipientSource, SalutationGroup $group)
+    public function __construct(RecipientSourceInterface $recipientSource, SalutationGroup $group)
     {
         $this->recipientSource = $recipientSource;
         $this->group           = $group;

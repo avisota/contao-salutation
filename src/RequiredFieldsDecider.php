@@ -34,6 +34,8 @@ class RequiredFieldsDecider implements DeciderInterface
      */
     public function accept(RecipientInterface $recipient, Salutation $salutation)
     {
+        global $container;
+
         $requiredFields = $salutation->getRequiredFieldsFilter();
         if (!$salutation->getEnableRequiredFieldsFilter() || empty($requiredFields)) {
             return true;
@@ -43,7 +45,7 @@ class RequiredFieldsDecider implements DeciderInterface
         foreach ($requiredFields as $requiredField) {
             if (empty($details[$requiredField])) {
                 /** @var SynonymizerService $synonymizer */
-                $synonymizer = $GLOBALS['container']['avisota.recipient.synonymizer'];
+                $synonymizer = $container['avisota.recipient.synonymizer'];
                 $synonyms    = $synonymizer->findSynonyms($requiredField);
                 $stillEmpty  = true;
 

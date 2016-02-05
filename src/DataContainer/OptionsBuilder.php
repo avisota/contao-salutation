@@ -50,7 +50,9 @@ class OptionsBuilder implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            'avisota.create-salutation-group-options' => 'createSalutationGroups',
+            'avisota.create-salutation-group-options' => array(
+                array('createSalutationGroups'),
+            ),
         );
     }
 

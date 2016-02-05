@@ -3,10 +3,12 @@
     <body>
       <trans-unit id="orm_avisota_message_category.salutation.0">
         <source>Salutation</source>
+        <target>Saudação</target>
         
       </trans-unit>
       <trans-unit id="orm_avisota_message_category.salutation.1">
         <source>Please chose the salution used by this recipient source.</source>
+        <target>Por favor, escolha o saudação usada por esta fonte de destinatário.</target>
         
       </trans-unit>
       <trans-unit id="orm_avisota_message_category.salutation_legend">

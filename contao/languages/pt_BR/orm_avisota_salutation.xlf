@@ -3,10 +3,12 @@
     <body>
       <trans-unit id="orm_avisota_salutation.salutation.0">
         <source>Salutation</source>
+        <target>Saudação</target>
 
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.salutation.1">
         <source>Please enter the salutation.</source>
+        <target>Por favor insira a saudação.</target>
 
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.enableGenderFilter.0">
@@ -43,6 +45,7 @@
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.salutation_legend">
         <source>Salutation</source>
+        <target>Saudação</target>
 
       </trans-unit>
       <trans-unit id="orm_avisota_salutation.filter_legend">

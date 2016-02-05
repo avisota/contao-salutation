@@ -38,12 +38,6 @@ $GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Salutation\GenderDeci
 $GLOBALS['AVISOTA_SALUTATION_DECIDER'][] = 'Avisota\Contao\Salutation\RequiredFieldsDecider';
 
 /**
- * Event subscribers
- */
-$GLOBALS['TL_EVENT_SUBSCRIBERS'][] = 'Avisota\Contao\Salutation\DataContainer\OptionsBuilder';
-$GLOBALS['TL_EVENT_SUBSCRIBERS'][] = 'Avisota\Contao\Salutation\EventSubscriber';
-
-/**
  * Predefined salutations
  */
 $GLOBALS['AVISOTA_SALUTATION'][0] = array(

@@ -34,8 +34,7 @@ $GLOBALS['TL_DCA']['orm_avisota_recipient_source']['config']['onload_callback'][
         }
     };
 
-$GLOBALS['TL_DCA']['orm_avisota_recipient_source']['fields']['salutation'] = array
-(
+$GLOBALS['TL_DCA']['orm_avisota_recipient_source']['fields']['salutation'] = array(
     'default'          => false,
     'label'            => &$GLOBALS['TL_LANG']['orm_avisota_recipient_source']['salutation'],
     'inputType'        => 'select',

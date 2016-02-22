@@ -20,7 +20,7 @@
         }
     ],
     "support": {
-        "email": "info@bit3.de",
+        "email": "support@avisota.org",
         "issues": "https://github.com/avisota/contao-subscription-member/issues",
         "forum": "https://community.contao.org/de/forumdisplay.php?121-Avisota",
         "wiki": "http://de.contaowiki.org/Kategorie:Avisota",
@@ -28,10 +28,10 @@
         "source": "https://github.com/avisota/contao-salutation"
     },
     "require": {
-        "php": ">=5.3",
-        "avisota/contao-core": "3.0.x-dev",
-        "contao-community-alliance/composer-plugin": "~2.3",
-        "contao/core": ">=2.11.11,<3.6"
+        "php": ">=5.4",
+        "contao/core": ">=3.5,<3.6",
+        "contao-community-alliance/composer-plugin": "~2.4",
+        "avisota/contao-core": "~3.0"
     },
     "require-dev": {
         "phpcq/all-tasks": "~1.1"
@@ -46,7 +46,10 @@
     "autoload-dev": {
         "psr-4": {
             "Avisota\\Test\\Contao\\Salutation\\": "tests/Test/"
-        }
+        },
+        "files": [
+            "vendor/phpcq/autoload-validation/hacks/contao-hack.php"
+        ]
     },
     "extra": {
         "contao": {

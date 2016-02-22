@@ -39,9 +39,17 @@ class EventSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return array(
-            CoreEvents::CREATE_RECIPIENT_SOURCE       => 'injectSalutation',
-            CoreEvents::CREATE_FAKE_RECIPIENT         => array('createFakeRecipient', -100),
-            CoreEvents::CREATE_PUBLIC_EMPTY_RECIPIENT => array('createPublicEmptyRecipient', -100),
+            CoreEvents::CREATE_RECIPIENT_SOURCE => array(
+                array('injectSalutation'),
+            ),
+
+            CoreEvents::CREATE_FAKE_RECIPIENT => array(
+                array('createFakeRecipient', -100),
+            ),
+
+            CoreEvents::CREATE_PUBLIC_EMPTY_RECIPIENT => array(
+                array('createPublicEmptyRecipient', -100),
+            ),
         );
     }
 

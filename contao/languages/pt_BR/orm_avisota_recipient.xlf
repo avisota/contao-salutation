@@ -3,10 +3,12 @@
     <body>
       <trans-unit id="orm_avisota_recipient.salutation.0">
         <source>Salutation</source>
+        <target>Saudação</target>
         
       </trans-unit>
       <trans-unit id="orm_avisota_recipient.salutation.1">
         <source>Please choose the prefered salutation.</source>
+        <target>Por favor, escolha a saudação preferida.</target>
         
       </trans-unit>
     </body>

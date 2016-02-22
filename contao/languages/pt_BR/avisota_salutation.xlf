@@ -3,10 +3,12 @@
     <body>
       <trans-unit id="avisota_salutation.0">
         <source>Dear Sir ##title## ##forename## ##surname##</source>
+        <target>Caro Senhor ##title## ##forename## ##surname##</target>
         
       </trans-unit>
       <trans-unit id="avisota_salutation.1">
         <source>Dear Madam ##title## ##forename## ##surname##</source>
+        <target>Cara Senhora ##title## ##forename## ##surname##</target>
         
       </trans-unit>
       <trans-unit id="avisota_salutation.2">
@@ -27,6 +29,7 @@
       </trans-unit>
       <trans-unit id="avisota_salutation.6">
         <source>Dear Sir or Madam ##title## ##forename## ##surname##</source>
+        <target>Caro Senhor(a) ##title## ##forename## ##surname##</target>
         
       </trans-unit>
       <trans-unit id="avisota_salutation.7">

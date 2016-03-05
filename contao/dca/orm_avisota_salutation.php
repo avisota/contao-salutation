@@ -79,6 +79,11 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation'] = array
             'headerFields'          => array('title'),
             'child_record_callback' => array('Avisota\Contao\Salutation\DataContainer\Salutation', 'addElement')
         ),
+        'label'             => array
+        (
+            'fields' => array('title'),
+            'format' => '%s'
+        ),
         'global_operations' => array
         (/*
 			'all' => array

@@ -24,6 +24,7 @@ use Avisota\Contao\Message\Core\Renderer\TagReplacementService;
 use Avisota\Recipient\MutableRecipient;
 use Avisota\Recipient\RecipientInterface;
 use Contao\Doctrine\ORM\EntityHelper;
+use ContaoCommunityAlliance\DcGeneral\Contao\View\Contao2BackendView\Event\GetSelectModeButtonsEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -49,6 +50,10 @@ class EventSubscriber implements EventSubscriberInterface
 
             CoreEvents::CREATE_PUBLIC_EMPTY_RECIPIENT => array(
                 array('createPublicEmptyRecipient', -100),
+            ),
+
+            GetSelectModeButtonsEvent::NAME => array(
+                array('deactivateSelectButtons'),
             ),
         );
     }
@@ -140,5 +145,26 @@ class EventSubscriber implements EventSubscriberInterface
         $buffer  = $tagReplacer->parse($pattern, $recipient->getDetails());
 
         $recipient->set('salutation', $buffer);
+    }
+
+    public function deactivateSelectButtons(GetSelectModeButtonsEvent $event)
+    {
+        if ($event->getEnvironment()->getInputProvider()->getParameter('act') !== 'select'
+            || $event->getEnvironment()->getDataDefinition()->getName() !== 'orm_avisota_salutation_group'
+        ) {
+            return;
+        }
+
+        $buttons = $event->getButtons();
+
+        foreach (
+            array(
+                'cut',
+            ) as $button
+        ) {
+            unset($buttons[$button]);
+        }
+
+        $event->setButtons($buttons);
     }
 }

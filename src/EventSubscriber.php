@@ -150,7 +150,13 @@ class EventSubscriber implements EventSubscriberInterface
     public function deactivateSelectButtons(GetSelectModeButtonsEvent $event)
     {
         if ($event->getEnvironment()->getInputProvider()->getParameter('act') !== 'select'
-            || $event->getEnvironment()->getDataDefinition()->getName() !== 'orm_avisota_salutation_group'
+            || !in_array(
+                $event->getEnvironment()->getDataDefinition()->getName(),
+                array(
+                    'orm_avisota_salutation_group',
+                    'orm_avisota_salutation'
+                )
+            )
         ) {
             return;
         }

@@ -147,6 +147,9 @@ class EventSubscriber implements EventSubscriberInterface
         $recipient->set('salutation', $buffer);
     }
 
+    /**
+     * @param GetSelectModeButtonsEvent $event
+     */
     public function deactivateSelectButtons(GetSelectModeButtonsEvent $event)
     {
         if ($event->getEnvironment()->getInputProvider()->getParameter('act') !== 'select'

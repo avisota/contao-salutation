@@ -40,9 +40,34 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
             (
                 'class'  => 'Contao\Doctrine\ORM\DataContainer\General\EntityDataProvider',
                 'source' => 'orm_avisota_salutation_group'
+            ),
+            'orm_avisota_salutation' => array
+            (
+                'class'  => 'Contao\Doctrine\ORM\DataContainer\General\EntityDataProvider',
+                'source' => 'orm_avisota_salutation'
             )
         ),
         'childCondition' => array(
+            array(
+                'from'   => 'orm_avisota_salutation_group',
+                'to'     => 'orm_avisota_salutation',
+                'setOn'  => array
+                (
+                    array(
+                        'to_field'   => 'salutationGroup',
+                        'from_field' => 'id',
+                    ),
+                ),
+                'filter' => array
+                (
+                    array
+                    (
+                        'local'     => 'salutationGroup',
+                        'remote'    => 'id',
+                        'operation' => '=',
+                    )
+                )
+            ),
             array(
                 'from'   => 'orm_avisota_salutation_group',
                 'to'     => 'orm_avisota_salutation',

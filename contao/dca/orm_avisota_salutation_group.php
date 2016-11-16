@@ -66,6 +66,15 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
                         'remote'    => 'id',
                         'operation' => '=',
                     )
+                ),
+                'inverse' => array
+                (
+                    array
+                    (
+                        'local'     => 'salutationGroup',
+                        'remote'    => 'id',
+                        'operation' => '=',
+                    ),
                 )
             ),
             array(
@@ -86,6 +95,15 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
                         'remote'    => 'id',
                         'operation' => '=',
                     )
+                ),
+                'inverse' => array
+                (
+                    array
+                    (
+                        'local'     => 'salutationGroup',
+                        'remote'    => 'id',
+                        'operation' => '=',
+                    ),
                 )
             )
         )

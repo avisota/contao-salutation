@@ -65,6 +65,7 @@ class Salutation implements EventSubscriberInterface
     {
         $environment   = $event->getEnvironment();
         $inputProvider = $environment->getInputProvider();
+        $translator    = $environment->getTranslator();
 
         if (!$inputProvider->hasParameter('id')) {
             return;
@@ -84,7 +85,7 @@ class Salutation implements EventSubscriberInterface
 
         $elements[] = array(
             'icon' => 'assets/avisota/salutation/images/salutation.png',
-            'text' => $GLOBALS['TL_LANG']['MOD']['avisota_salutation'][0],
+            'text' => $translator->translate('avisota_salutation.0', 'MOD'),
             'url'  => $urlSalutationBuilder->getUrl()
         );
 

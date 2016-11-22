@@ -22,7 +22,6 @@ $GLOBALS['BE_MOD']['avisota']['avisota_salutation'] = array
     'tables'     => array('orm_avisota_salutation_group', 'orm_avisota_salutation'),
     'icon'       => 'assets/avisota/salutation/images/salutation.png',
     'stylesheet' => 'assets/avisota/salutation/css/backend.css',
-    'generate'   => array('Avisota\Contao\Salutation\DataContainer\SalutationGroup', 'generate')
 );
 
 /**

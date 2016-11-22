@@ -129,7 +129,7 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
             'generate' => array
             (
                 'label'      => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['generate'],
-                'href'       => 'key=generate',
+                'href'       => 'act=generate',
                 'class'      => 'header_avisota_generate_salutation',
                 'attributes' => 'onclick="Backend.getScrollOffset();" accesskey="g"'
             ),

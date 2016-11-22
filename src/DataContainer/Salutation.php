@@ -60,6 +60,8 @@ class Salutation implements EventSubscriberInterface
      * @param GetBreadcrumbEvent $event This event.
      *
      * @return void
+     *
+     * @SuppressWarnings(PHPMD.LongVariable)
      */
     public function getBreadCrumb(GetBreadcrumbEvent $event)
     {

@@ -74,13 +74,16 @@ class SalutationGroup implements EventSubscriberInterface
      */
     public function getBreadCrumb(GetBreadcrumbEvent $event)
     {
-        $environment   = $event->getEnvironment();
-        $inputProvider = $environment->getInputProvider();
-        $translator    = $environment->getTranslator();
+        $environment    = $event->getEnvironment();
+        $dataDefinition = $environment->getDataDefinition();
+        $inputProvider  = $environment->getInputProvider();
+        $translator     = $environment->getTranslator();
 
         $modelParameter = $inputProvider->hasParameter('act') ? 'id' : 'pid';
 
-        if (!$inputProvider->hasParameter($modelParameter)) {
+        if ($dataDefinition->getName() !== 'orm_avisota_salutation_group'
+            || !$inputProvider->hasParameter($modelParameter)
+        ) {
             return;
         }
 
@@ -107,8 +110,8 @@ class SalutationGroup implements EventSubscriberInterface
 
     public function generateStandardGroup(ActionEvent $event)
     {
-        $action = $event->getAction();
-        $environment = $event->getEnvironment();
+        $action         = $event->getAction();
+        $environment    = $event->getEnvironment();
         $dataDefinition = $environment->getDataDefinition();
 
         if ($dataDefinition->getName() !== 'orm_avisota_salutation_group'
@@ -120,7 +123,7 @@ class SalutationGroup implements EventSubscriberInterface
         global $AVISOTA_SALUTATION;
 
         $eventDispatcher = $environment->getEventDispatcher();
-        $translator = $environment->getTranslator();
+        $translator      = $environment->getTranslator();
 
         $eventDispatcher->dispatch(
             ContaoEvents::SYSTEM_LOAD_LANGUAGE_FILE,
@@ -135,7 +138,7 @@ class SalutationGroup implements EventSubscriberInterface
 
         $entityDataProvider = new EntityDataProvider();
         $entityDataProvider->setBaseConfig(array('source' => 'orm_avisota_salutation_group'));
-        $entityManager = $entityDataProvider->getEntityManager();
+        $entityManager  = $entityDataProvider->getEntityManager();
         $entityAccessor = $entityDataProvider->getEntityAccessor();
 
         $salutationGroup = new \Avisota\Contao\Entity\SalutationGroup();

@@ -65,16 +65,25 @@ class Salutation implements EventSubscriberInterface
      */
     public function getBreadCrumb(GetBreadcrumbEvent $event)
     {
-        $environment   = $event->getEnvironment();
+        $environment = $event->getEnvironment();
+        $dataDefinition = $environment->getDataDefinition();
         $inputProvider = $environment->getInputProvider();
-        $translator    = $environment->getTranslator();
+        $translator = $environment->getTranslator();
 
-        if (!$inputProvider->hasParameter('id')) {
+        $modelParameter = $inputProvider->hasParameter('act') ? 'id' : 'pid';
+
+        if ($dataDefinition->getName() !== 'orm_avisota_salutation'
+            || !$inputProvider->hasParameter($modelParameter)
+        ) {
             return;
         }
 
-        $salutationModelId = ModelId::fromSerialized($inputProvider->getParameter('id'));
-        if ($salutationModelId->getDataProviderName() !== 'orm_avisota_salutation') {
+        $salutationModelId = ModelId::fromSerialized($inputProvider->getParameter($modelParameter));
+        if (!in_array(
+            $salutationModelId->getDataProviderName(),
+            array('orm_avisota_salutation', 'orm_avisota_salutation_group')
+        )
+        ) {
             return;
         }
 
@@ -90,6 +99,12 @@ class Salutation implements EventSubscriberInterface
             'text' => $translator->translate('avisota_salutation.0', 'MOD'),
             'url'  => $urlSalutationBuilder->getUrl()
         );
+
+        if ($modelParameter === 'pid') {
+            $event->setElements($elements);
+
+            return;
+        }
 
         $urlSalutationGroupBuilder = new UrlBuilder();
         $urlSalutationGroupBuilder->setPath('contao/main.php')

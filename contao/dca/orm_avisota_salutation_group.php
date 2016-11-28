@@ -36,24 +36,29 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
     (
         'data_provider'  => array
         (
-            'default' => array
+            'default'                => array
             (
                 'class'  => 'Contao\Doctrine\ORM\DataContainer\General\EntityDataProvider',
                 'source' => 'orm_avisota_salutation_group'
+            ),
+            'orm_avisota_salutation' => array
+            (
+                'class'  => 'Contao\Doctrine\ORM\DataContainer\General\EntityDataProvider',
+                'source' => 'orm_avisota_salutation'
             )
         ),
         'childCondition' => array(
             array(
-                'from'   => 'orm_avisota_salutation_group',
-                'to'     => 'orm_avisota_salutation',
-                'setOn'  => array
+                'from'    => 'orm_avisota_salutation_group',
+                'to'      => 'orm_avisota_salutation',
+                'setOn'   => array
                 (
                     array(
                         'to_field'   => 'salutationGroup',
                         'from_field' => 'id',
                     ),
                 ),
-                'filter' => array
+                'filter'  => array
                 (
                     array
                     (
@@ -61,6 +66,44 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
                         'remote'    => 'id',
                         'operation' => '=',
                     )
+                ),
+                'inverse' => array
+                (
+                    array
+                    (
+                        'local'     => 'salutationGroup',
+                        'remote'    => 'id',
+                        'operation' => '=',
+                    ),
+                )
+            ),
+            array(
+                'from'    => 'orm_avisota_salutation_group',
+                'to'      => 'orm_avisota_salutation',
+                'setOn'   => array
+                (
+                    array(
+                        'to_field'   => 'salutationGroup',
+                        'from_field' => 'id',
+                    ),
+                ),
+                'filter'  => array
+                (
+                    array
+                    (
+                        'local'     => 'salutationGroup',
+                        'remote'    => 'id',
+                        'operation' => '=',
+                    )
+                ),
+                'inverse' => array
+                (
+                    array
+                    (
+                        'local'     => 'salutationGroup',
+                        'remote'    => 'id',
+                        'operation' => '=',
+                    ),
                 )
             )
         )
@@ -86,7 +129,7 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
             'generate' => array
             (
                 'label'      => &$GLOBALS['TL_LANG']['orm_avisota_salutation_group']['generate'],
-                'href'       => 'key=generate',
+                'href'       => 'act=generate',
                 'class'      => 'header_avisota_generate_salutation',
                 'attributes' => 'onclick="Backend.getScrollOffset();" accesskey="g"'
             ),

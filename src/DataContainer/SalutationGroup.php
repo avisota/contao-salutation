@@ -15,12 +15,18 @@
 
 namespace Avisota\Contao\Salutation\DataContainer;
 
-use Avisota\Contao\Core\Service\SuperglobalsService;
-use Contao\Doctrine\ORM\EntityAccessor;
-use Contao\Doctrine\ORM\EntityHelper;
+use Contao\Config;
+use Contao\Controller;
+use Contao\Doctrine\ORM\DataContainer\General\EntityDataProvider;
+use Contao\Session;
 use ContaoCommunityAlliance\Contao\Bindings\ContaoEvents;
 use ContaoCommunityAlliance\Contao\Bindings\Events\System\LoadLanguageFileEvent;
-use Symfony\Component\EventDispatcher\EventDispatcher;
+use ContaoCommunityAlliance\DcGeneral\Contao\View\Contao2BackendView\Event\GetBreadcrumbEvent;
+use ContaoCommunityAlliance\DcGeneral\Data\ModelId;
+use ContaoCommunityAlliance\DcGeneral\DcGeneralEvents;
+use ContaoCommunityAlliance\DcGeneral\Event\ActionEvent;
+use ContaoCommunityAlliance\UrlBuilder\UrlBuilder;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
  * Class SalutationGroup
@@ -29,17 +35,95 @@ use Symfony\Component\EventDispatcher\EventDispatcher;
  * @SuppressWarnings(PHPMD.LongVariable)
  * @SuppressWarnings(PHPMD.CamelCaseVariableName)
  */
-class SalutationGroup extends \Controller
+class SalutationGroup implements EventSubscriberInterface
 {
-    public function generate()
-    {
-        global $container,
-               $AVISOTA_SALUTATION;
 
-        /** @var EventDispatcher $eventDispatcher */
-        $eventDispatcher = $container['event-dispatcher'];
-        /** @var SuperglobalsService $superglobals */
-        $superglobals = $container['avisota.superglobals'];
+    /**
+     * Returns the events to which this class has subscribed.
+     *
+     * Return format:
+     *     array(
+     *         array('event' => 'the-event-name', 'method' => 'onEventName', 'class' => 'some-class', 'format' =>
+     *         'json'), array(...),
+     *     )
+     *
+     * The class may be omitted if the class wants to subscribe to events of all classes.
+     * Same goes for the format key.
+     *
+     * @return array
+     */
+    public static function getSubscribedEvents()
+    {
+        return array(
+            GetBreadcrumbEvent::NAME => array(
+                array('getBreadCrumb')
+            ),
+
+            DcGeneralEvents::ACTION => array(
+                array('generateStandardGroup')
+            )
+        );
+    }
+
+    /**
+     * Get the bread crumb elements.
+     *
+     * @param GetBreadcrumbEvent $event This event.
+     *
+     * @return void
+     */
+    public function getBreadCrumb(GetBreadcrumbEvent $event)
+    {
+        $environment    = $event->getEnvironment();
+        $dataDefinition = $environment->getDataDefinition();
+        $inputProvider  = $environment->getInputProvider();
+        $translator     = $environment->getTranslator();
+
+        $modelParameter = $inputProvider->hasParameter('act') ? 'id' : 'pid';
+
+        if ($dataDefinition->getName() !== 'orm_avisota_salutation_group'
+            || !$inputProvider->hasParameter($modelParameter)
+        ) {
+            return;
+        }
+
+        $modelId = ModelId::fromSerialized($inputProvider->getParameter($modelParameter));
+        if ($modelId->getDataProviderName() !== 'orm_avisota_salutation_group') {
+            return;
+        }
+
+        $elements = $event->getElements();
+
+        $urlBuilder = new UrlBuilder();
+        $urlBuilder->setPath('contao/main.php')
+            ->setQueryParameter('do', $inputProvider->getParameter('do'))
+            ->setQueryParameter('ref', TL_REFERER_ID);
+
+        $elements[] = array(
+            'icon' => 'assets/avisota/salutation/images/salutation.png',
+            'text' => $translator->translate('avisota_salutation.0', 'MOD'),
+            'url'  => $urlBuilder->getUrl()
+        );
+
+        $event->setElements($elements);
+    }
+
+    public function generateStandardGroup(ActionEvent $event)
+    {
+        $action         = $event->getAction();
+        $environment    = $event->getEnvironment();
+        $dataDefinition = $environment->getDataDefinition();
+
+        if ($dataDefinition->getName() !== 'orm_avisota_salutation_group'
+            || $action->getName() !== 'generate'
+        ) {
+            return;
+        }
+
+        global $AVISOTA_SALUTATION;
+
+        $eventDispatcher = $environment->getEventDispatcher();
+        $translator      = $environment->getTranslator();
 
         $eventDispatcher->dispatch(
             ContaoEvents::SYSTEM_LOAD_LANGUAGE_FILE,
@@ -50,15 +134,15 @@ class SalutationGroup extends \Controller
             new LoadLanguageFileEvent('orm_avisota_salutation_group')
         );
 
-        /** @var EntityAccessor $entityAccessor */
-        $entityAccessor = $container['doctrine.orm.entityAccessor'];
-
         $predefinedSalutations = $AVISOTA_SALUTATION;
 
-        $entityManager = EntityHelper::getEntityManager();
+        $entityDataProvider = new EntityDataProvider();
+        $entityDataProvider->setBaseConfig(array('source' => 'orm_avisota_salutation_group'));
+        $entityManager  = $entityDataProvider->getEntityManager();
+        $entityAccessor = $entityDataProvider->getEntityAccessor();
 
         $salutationGroup = new \Avisota\Contao\Entity\SalutationGroup();
-        $salutationGroup->setTitle('Default group generated at ' . date(\Config::get('datimFormat')));
+        $salutationGroup->setTitle('Default group generated at ' . date(Config::get('datimFormat')));
         $salutationGroup->setAlias(null);
 
         $sorting = 64;
@@ -67,7 +151,7 @@ class SalutationGroup extends \Controller
 
             $entityAccessor->setProperties($salutation, $predefinedSalutation);
 
-            $salutation->setSalutation($superglobals->getLanguage('avisota_salutation/' . $index));
+            $salutation->setSalutation($translator->translate($index, 'avisota_salutation'));
             $salutation->setSalutationGroup($salutationGroup);
             $salutation->setSorting($sorting);
             $salutationGroup->addSalutation($salutation);
@@ -77,13 +161,13 @@ class SalutationGroup extends \Controller
         $entityManager->persist($salutationGroup);
         $entityManager->flush($salutationGroup);
 
-        $sessionConfirm = \Session::getInstance()->get('TL_CONFIRM');
+        $sessionConfirm = Session::getInstance()->get('TL_CONFIRM');
         if (!is_array($sessionConfirm)) {
             $sessionConfirm = (array) $sessionConfirm;
         }
-        $sessionConfirm[] = $superglobals->getLanguage('orm_avisota_salutation_group/group_generated');
-        \Session::getInstance()->set('TL_CONFIRM', $sessionConfirm);
+        $sessionConfirm[] = $translator->translate('group_generated', 'orm_avisota_salutation_group');
+        Session::getInstance()->set('TL_CONFIRM', $sessionConfirm);
 
-        $this->redirect('contao/main.php?do=avisota_salutation');
+        Controller::redirect('contao/main.php?do=avisota_salutation');
     }
 }

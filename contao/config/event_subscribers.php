@@ -13,10 +13,14 @@
  * @filesource
  */
 
-use Avisota\Contao\Salutation\EventSubscriber;
 use Avisota\Contao\Salutation\DataContainer\OptionsBuilder;
+use Avisota\Contao\Salutation\DataContainer\Salutation;
+use Avisota\Contao\Salutation\DataContainer\SalutationGroup;
+use Avisota\Contao\Salutation\EventSubscriber;
 
 return array(
     new EventSubscriber(),
-    new OptionsBuilder()
+    new OptionsBuilder(),
+    new Salutation(),
+    new SalutationGroup()
 );

@@ -90,15 +90,13 @@ $GLOBALS['TL_DCA']['orm_avisota_salutation_group'] = array
                 'class'      => 'header_avisota_generate_salutation',
                 'attributes' => 'onclick="Backend.getScrollOffset();" accesskey="g"'
             ),
-            /*
             'all'      => array
             (
                 'label'      => &$GLOBALS['TL_LANG']['MSC']['all'],
                 'href'       => 'act=select',
                 'class'      => 'header_edit_all',
                 'attributes' => 'onclick="Backend.getScrollOffset();" accesskey="e"'
-            )
-            */
+            ),
         ),
         'operations'        => array
         (

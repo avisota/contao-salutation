@@ -4,22 +4,28 @@
       <trans-unit id="MOD.avisota-salutation.0">
         <source>Avisota - Salutation</source>
         <target>Avisota-Anreden</target>
-        
+
       </trans-unit>
       <trans-unit id="MOD.avisota-salutation.1">
         <source>Manage flexible and dynamic salutations for Avisota messages.</source>
         <target>Verwalten Sie flexible und dynamische Anreden für Avisota-Nachrichten.</target>
-        
+
       </trans-unit>
       <trans-unit id="MOD.avisota_salutation.0">
         <source>Salutation</source>
         <target>Anrede</target>
-        
+
       </trans-unit>
       <trans-unit id="MOD.avisota_salutation.1">
         <source>Manage salutations.</source>
         <target>Verwalten Sie Anreden.</target>
-        
+
+      </trans-unit>
+
+      <trans-unit id="MOD.avisota_salutation_group.0">
+        <source>Salutation Group</source>
+        <target>Anrede Gruppe</target>
+
       </trans-unit>
     </body>
   </file>

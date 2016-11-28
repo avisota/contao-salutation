@@ -4,21 +4,26 @@
       <trans-unit id="MOD.avisota-salutation.0">
         <source>Avisota - Salutation</source>
         <target>Avisota - Saudação</target>
-        
+
       </trans-unit>
       <trans-unit id="MOD.avisota-salutation.1">
         <source>Manage flexible and dynamic salutations for Avisota messages.</source>
         <target>Gerencie saudações flexíveis e dinâmicas para mensagens Avisota.</target>
-        
+
       </trans-unit>
       <trans-unit id="MOD.avisota_salutation.0">
         <source>Salutation</source>
         <target>Saudação</target>
-        
+
       </trans-unit>
       <trans-unit id="MOD.avisota_salutation.1">
         <source>Manage salutations.</source>
-        
+
+      </trans-unit>
+
+      <trans-unit id="MOD.avisota_salutation_group.0">
+        <source>Salutation Group</source>
+
       </trans-unit>
     </body>
   </file>

@@ -151,7 +151,7 @@ class SalutationGroup implements EventSubscriberInterface
 
             $entityAccessor->setProperties($salutation, $predefinedSalutation);
 
-            $salutation->setSalutation($translator->translate($index, 'avisota_salutation'));
+            $salutation->setSalutation($translator->translate((string) $index, 'avisota_salutation'));
             $salutation->setSalutationGroup($salutationGroup);
             $salutation->setSorting($sorting);
             $salutationGroup->addSalutation($salutation);

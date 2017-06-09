@@ -37,26 +37,29 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
  */
 class SalutationGroup implements EventSubscriberInterface
 {
-
     /**
-     * Returns the events to which this class has subscribed.
+     * Returns an array of event names this subscriber wants to listen to.
      *
-     * Return format:
-     *     array(
-     *         array('event' => 'the-event-name', 'method' => 'onEventName', 'class' => 'some-class', 'format' =>
-     *         'json'), array(...),
-     *     )
+     * The array keys are event names and the value can be:
      *
-     * The class may be omitted if the class wants to subscribe to events of all classes.
-     * Same goes for the format key.
+     *  * The method name to call (priority defaults to 0)
+     *  * An array composed of the method name to call and the priority
+     *  * An array of arrays composed of the method names to call and respective
+     *    priorities, or 0 if unset
      *
-     * @return array
+     * For instance:
+     *
+     *  * array('eventName' => 'methodName')
+     *  * array('eventName' => array('methodName', $priority))
+     *  * array('eventName' => array(array('methodName1', $priority), array('methodName2')))
+     *
+     * @return array The event names to listen to
      */
     public static function getSubscribedEvents()
     {
         return array(
             GetBreadcrumbEvent::NAME => array(
-                array('getBreadCrumb')
+                array('getBreadCrumb', 2)
             ),
 
             DcGeneralEvents::ACTION => array(
@@ -79,30 +82,60 @@ class SalutationGroup implements EventSubscriberInterface
         $inputProvider  = $environment->getInputProvider();
         $translator     = $environment->getTranslator();
 
-        $modelParameter = $inputProvider->hasParameter('act') ? 'id' : 'pid';
-
-        if ($dataDefinition->getName() !== 'orm_avisota_salutation_group'
-            || !$inputProvider->hasParameter($modelParameter)
-        ) {
-            return;
-        }
-
-        $modelId = ModelId::fromSerialized($inputProvider->getParameter($modelParameter));
-        if ($modelId->getDataProviderName() !== 'orm_avisota_salutation_group') {
+        if (false === strpos($dataDefinition->getName(), 'orm_avisota_salutation')) {
             return;
         }
 
         $elements = $event->getElements();
 
-        $urlBuilder = new UrlBuilder();
-        $urlBuilder->setPath('contao/main.php')
+        $rootUrlBuilder = new UrlBuilder();
+        $rootUrlBuilder->setPath('contao/main.php')
             ->setQueryParameter('do', $inputProvider->getParameter('do'))
             ->setQueryParameter('ref', TL_REFERER_ID);
 
         $elements[] = array(
             'icon' => 'assets/avisota/salutation/images/salutation.png',
             'text' => $translator->translate('avisota_salutation.0', 'MOD'),
-            'url'  => $urlBuilder->getUrl()
+            'url'  => $rootUrlBuilder->getUrl()
+        );
+
+        $modelParameter = $inputProvider->hasParameter('act') ? 'id' : 'pid';
+        if (false === $inputProvider->hasParameter($modelParameter)) {
+            $event->setElements($elements);
+
+            return;
+        }
+
+        $modelId = ModelId::fromSerialized($inputProvider->getParameter($modelParameter));
+        if ('orm_avisota_salutation_group' !== $modelId->getDataProviderName()) {
+            $event->setElements($elements);
+
+            return;
+        }
+
+        $dataProvider = $environment->getDataProvider($modelId->getDataProviderName());
+        $repository   = $dataProvider->getEntityRepository();
+
+        $entity = $repository->findOneBy(array('id' => $modelId->getId()));
+
+        $entityUrlBuilder = new UrlBuilder();
+        $entityUrlBuilder->setPath('contao/main.php')
+            ->setQueryParameter('do', $inputProvider->getParameter('do'))
+            ->setQueryParameter($modelParameter, $inputProvider->getParameter($modelParameter))
+            ->setQueryParameter('ref', TL_REFERER_ID);
+
+        if ('id' === $modelParameter) {
+            $entityUrlBuilder->setQueryParameter('act', $inputProvider->getParameter('act'));
+        }
+
+        if ('pid' === $modelParameter) {
+            $entityUrlBuilder->setQueryParameter('table', $dataDefinition->getName());
+        }
+
+        $elements[] = array(
+            'icon' => 'assets/avisota/salutation/images/salutation.png',
+            'text' => $entity->getTitle(),
+            'url'  => $entityUrlBuilder->getUrl()
         );
 
         $event->setElements($elements);
@@ -151,7 +184,7 @@ class SalutationGroup implements EventSubscriberInterface
 
             $entityAccessor->setProperties($salutation, $predefinedSalutation);
 
-            $salutation->setSalutation($translator->translate($index, 'avisota_salutation'));
+            $salutation->setSalutation($translator->translate((string) $index, 'avisota_salutation'));
             $salutation->setSalutationGroup($salutationGroup);
             $salutation->setSorting($sorting);
             $salutationGroup->addSalutation($salutation);

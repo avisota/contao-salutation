@@ -49,7 +49,7 @@ class Salutation implements EventSubscriberInterface
     {
         return array(
             GetBreadcrumbEvent::NAME => array(
-                array('getBreadCrumb')
+                array('getBreadCrumb', 1)
             )
         );
     }
@@ -65,64 +65,100 @@ class Salutation implements EventSubscriberInterface
      */
     public function getBreadCrumb(GetBreadcrumbEvent $event)
     {
-        $environment = $event->getEnvironment();
+        $environment    = $event->getEnvironment();
         $dataDefinition = $environment->getDataDefinition();
-        $inputProvider = $environment->getInputProvider();
-        $translator = $environment->getTranslator();
+        $inputProvider  = $environment->getInputProvider();
 
-        $modelParameter = $inputProvider->hasParameter('act') ? 'id' : 'pid';
-
-        if ($dataDefinition->getName() !== 'orm_avisota_salutation'
-            || !$inputProvider->hasParameter($modelParameter)
-        ) {
+        if ('orm_avisota_salutation' !== $dataDefinition->getName()) {
             return;
         }
 
-        $salutationModelId = ModelId::fromSerialized($inputProvider->getParameter($modelParameter));
-        if (!in_array(
-            $salutationModelId->getDataProviderName(),
-            array('orm_avisota_salutation', 'orm_avisota_salutation_group')
-        )
+        if (false === $inputProvider->hasParameter('id')) {
+            $this->getBreadCrumbByClearClipboard($event);
+
+            return;
+        }
+
+        $elements = $event->getElements();
+
+        $modelId = ModelId::fromSerialized($inputProvider->getParameter('id'));
+
+        $dataProvider = $environment->getDataProvider($modelId->getDataProviderName());
+        $repository   = $dataProvider->getEntityRepository();
+
+        $salutationEntity      = $repository->findOneBy(array('id' => $modelId->getId()));
+        $salutationGroupEntity = $salutationEntity->getSalutationGroup();
+
+        $parentUrlBuilder = new UrlBuilder();
+        $parentUrlBuilder->setPath('contao/main.php')
+            ->setQueryParameter('do', $inputProvider->getParameter('do'))
+            ->setQueryParameter('table', $dataDefinition->getName())
+            ->setQueryParameter('pid', $inputProvider->getParameter('pid'))
+            ->setQueryParameter('ref', TL_REFERER_ID);
+
+        $elements[] = array(
+            'icon' => 'assets/avisota/salutation/images/salutation.png',
+            'text' => $salutationGroupEntity->getTitle(),
+            'url'  => $parentUrlBuilder->getUrl()
+        );
+
+        $entityUrlBuilder = new UrlBuilder();
+        $entityUrlBuilder->setPath('contao/main.php')
+            ->setQueryParameter('do', $inputProvider->getParameter('do'))
+            ->setQueryParameter('table', $dataDefinition->getName())
+            ->setQueryParameter('act', $inputProvider->getParameter('act'))
+            ->setQueryParameter('id', $inputProvider->getParameter('id'))
+            ->setQueryParameter('pid', $inputProvider->getParameter('pid'))
+            ->setQueryParameter('ref', TL_REFERER_ID);
+
+        $elements[] = array(
+            'icon' => 'assets/avisota/salutation/images/salutation.png',
+            'text' => $salutationEntity->getSalutation(),
+            'url'  => $entityUrlBuilder->getUrl()
+        );
+
+        $event->setElements($elements);
+    }
+
+    /**
+     * Get bread crumb after clear the clipboard.
+     *
+     * @param GetBreadcrumbEvent $event The event.
+     *
+     * @return void
+     */
+    private function getBreadCrumbByClearClipboard(GetBreadcrumbEvent $event)
+    {
+        $environment   = $event->getEnvironment();
+        $inputProvider = $environment->getInputProvider();
+
+        if ((false === $inputProvider->hasParameter('clipboard-item'))
+            || ('' !== $inputProvider->getParameter('clipboard-item'))
         ) {
             return;
         }
 
         $elements = $event->getElements();
 
-        $urlSalutationBuilder = new UrlBuilder();
-        $urlSalutationBuilder->setPath('contao/main.php')
+        $modelId = ModelId::fromSerialized($inputProvider->getParameter('pid'));
+
+        $dataDefinition = $environment->getDataDefinition();
+        $dataProvider   = $environment->getDataProvider($modelId->getDataProviderName());
+        $repository     = $dataProvider->getEntityRepository();
+
+        $salutationGroupEntity = $repository->findOneBy(array('id' => $modelId->getId()));
+
+        $parentUrlBuilder = new UrlBuilder();
+        $parentUrlBuilder->setPath('contao/main.php')
             ->setQueryParameter('do', $inputProvider->getParameter('do'))
+            ->setQueryParameter('table', $dataDefinition->getName())
+            ->setQueryParameter('pid', $inputProvider->getParameter('pid'))
             ->setQueryParameter('ref', TL_REFERER_ID);
 
         $elements[] = array(
             'icon' => 'assets/avisota/salutation/images/salutation.png',
-            'text' => $translator->translate('avisota_salutation.0', 'MOD'),
-            'url'  => $urlSalutationBuilder->getUrl()
-        );
-
-        if ($modelParameter === 'pid') {
-            $event->setElements($elements);
-
-            return;
-        }
-
-        $urlSalutationGroupBuilder = new UrlBuilder();
-        $urlSalutationGroupBuilder->setPath('contao/main.php')
-            ->setQueryParameter('do', $inputProvider->getParameter('do'))
-            ->setQueryParameter('table', $inputProvider->getParameter('table'))
-            ->setQueryParameter('pid', $inputProvider->getParameter('pid'))
-            ->setQueryParameter('ref', TL_REFERER_ID);
-
-        $salutationGroupModelId = ModelId::fromSerialized($inputProvider->getParameter('pid'));
-        $dataProvider           = $environment->getDataProvider($salutationGroupModelId->getDataProviderName());
-        $model                  =
-            $dataProvider->fetch($dataProvider->getEmptyConfig()->setId($salutationGroupModelId->getId()));
-        $entity                 = $model->getEntity();
-
-        $elements[] = array(
-            'icon' => 'assets/avisota/subscription-recipient/images/recipients.png',
-            'text' => $entity->getTitle(),
-            'url'  => $urlSalutationGroupBuilder->getUrl()
+            'text' => $salutationGroupEntity->getTitle(),
+            'url'  => $parentUrlBuilder->getUrl()
         );
 
         $event->setElements($elements);

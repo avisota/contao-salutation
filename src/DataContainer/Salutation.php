@@ -2,11 +2,11 @@
 
 /**
  * Avisota newsletter and mailing system
- * Copyright © 2016 Sven Baumann
+ * Copyright © 2017 Sven Baumann
  *
  * PHP version 5
  *
- * @copyright  way.vision 2016
+ * @copyright  way.vision 2017
  * @author     Sven Baumann <baumann.sv@gmail.com>
  * @package    avisota/contao-core
  * @license    LGPL-3.0+
@@ -73,10 +73,15 @@ class Salutation implements EventSubscriberInterface
             return;
         }
 
-        if (false === $inputProvider->hasParameter('id')) {
+        if (empty($inputProvider->getParameter('act'))) {
             $this->getBreadCrumbByClearClipboard($event);
 
             return;
+        }
+
+        if ('edit' !== $inputProvider->getParameter('act')) {
+            $inputProvider
+                ->setParameter('id', ModelId::fromValues('orm_avisota_salutation', 0)->getSerialized());
         }
 
         $elements = $event->getElements();
@@ -86,8 +91,25 @@ class Salutation implements EventSubscriberInterface
         $dataProvider = $environment->getDataProvider($modelId->getDataProviderName());
         $repository   = $dataProvider->getEntityRepository();
 
-        $salutationEntity      = $repository->findOneBy(array('id' => $modelId->getId()));
-        $salutationGroupEntity = $salutationEntity->getSalutationGroup();
+        $parentDataDefinition = $environment->getParentDataDefinition();
+        if (null === $parentDataDefinition) {
+            $event->setElements($elements);
+
+            return;
+        }
+
+        $salutationEntity = $repository->findOneBy(array('id' => $modelId->getId()));
+        if (null === $salutationEntity) {
+            $parentDataProvider = $environment->getDataProvider($parentDataDefinition->getName());
+            $parentRepository   = $parentDataProvider->getEntityRepository();
+
+            $parentModelId         = ModelId::fromSerialized($inputProvider->getParameter('pid'));
+            $salutationGroupEntity = $parentRepository->findOneBy(array('id' => $parentModelId->getId()));
+        }
+
+        if ('edit' === $inputProvider->getParameter('act')) {
+            $salutationGroupEntity = $salutationEntity->getSalutationGroup();
+        }
 
         $parentUrlBuilder = new UrlBuilder();
         $parentUrlBuilder->setPath('contao/main.php')
@@ -101,6 +123,12 @@ class Salutation implements EventSubscriberInterface
             'text' => $salutationGroupEntity->getTitle(),
             'url'  => $parentUrlBuilder->getUrl()
         );
+
+        if (null ===  $salutationEntity) {
+            $event->setElements($elements);
+
+            return;
+        }
 
         $entityUrlBuilder = new UrlBuilder();
         $entityUrlBuilder->setPath('contao/main.php')

@@ -2,11 +2,11 @@
 
 /**
  * Avisota newsletter and mailing system
- * Copyright © 2016 Sven Baumann
+ * Copyright © 2017 Sven Baumann
  *
  * PHP version 5
  *
- * @copyright  way.vision 2016
+ * @copyright  way.vision 2017
  * @author     Sven Baumann <baumann.sv@gmail.com>
  * @package    avisota/contao-core
  * @license    LGPL-3.0+
@@ -100,7 +100,9 @@ class SalutationGroup implements EventSubscriberInterface
         );
 
         $modelParameter = $inputProvider->hasParameter('act') ? 'id' : 'pid';
-        if (false === $inputProvider->hasParameter($modelParameter)) {
+        if (false === $inputProvider->hasParameter($modelParameter)
+            || empty($inputProvider->getParameter($modelParameter))
+        ) {
             $event->setElements($elements);
 
             return;

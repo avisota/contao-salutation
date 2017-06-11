@@ -2,11 +2,11 @@
 
 /**
  * Avisota newsletter and mailing system
- * Copyright © 2016 Sven Baumann
+ * Copyright © 2017 Sven Baumann
  *
  * PHP version 5
  *
- * @copyright  way.vision 2016
+ * @copyright  way.vision 2017
  * @author     Sven Baumann <baumann.sv@gmail.com>
  * @package    avisota/contao-core
  * @license    LGPL-3.0+
@@ -15,7 +15,6 @@
 
 namespace Avisota\Contao\Salutation\DataContainer;
 
-use Avisota\Contao\Entity\SalutationGroup;
 use Contao\Doctrine\ORM\EntityHelper;
 use ContaoCommunityAlliance\Contao\Events\CreateOptions\CreateOptionsEvent;
 use ContaoCommunityAlliance\DcGeneral\Contao\Compatibility\DcCompat;
@@ -79,7 +78,6 @@ class OptionsBuilder implements EventSubscriberInterface
     {
         if ($dc instanceof DcCompat && $dc->getModel()) {
             $salutationGroupRepository = EntityHelper::getRepository('Avisota\Contao:SalutationGroup');
-            /** @var SalutationGroup[] $salutationGroups */
             $salutationGroups = $salutationGroupRepository->findAll();
 
             foreach ($salutationGroups as $salutationGroup) {

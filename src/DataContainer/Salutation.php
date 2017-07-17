@@ -73,7 +73,7 @@ class Salutation implements EventSubscriberInterface
             return;
         }
 
-        if (empty($inputProvider->getParameter('act'))) {
+        if (!$inputProvider->getParameter('act')) {
             $this->getBreadCrumbByClearClipboard($event);
 
             return;

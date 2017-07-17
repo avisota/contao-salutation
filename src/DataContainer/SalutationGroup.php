@@ -101,7 +101,7 @@ class SalutationGroup implements EventSubscriberInterface
 
         $modelParameter = $inputProvider->hasParameter('act') ? 'id' : 'pid';
         if (false === $inputProvider->hasParameter($modelParameter)
-            || empty($inputProvider->getParameter($modelParameter))
+            || !$inputProvider->getParameter($modelParameter)
         ) {
             $event->setElements($elements);
 
